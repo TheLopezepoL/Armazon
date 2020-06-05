@@ -2,6 +2,7 @@
 #define CLIENTLIST_H
 #include "client.h"
 
+//NODO DE ESTRUCTURA CLIENTE
 struct NodeClient {
     Client* data;
     NodeClient* nxt;
@@ -9,6 +10,7 @@ struct NodeClient {
     NodeClient();
 };
 
+//LISTA SIMPLE DE CLIENTES
 struct SimpleList {
     NodeClient* first;
 

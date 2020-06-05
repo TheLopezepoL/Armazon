@@ -2,7 +2,7 @@
 #define FACTORY_H
 
 #include "orderqueue.h"
-
+//ESTRUCTURA DE FABRICAS
 struct Factory{
     //Attributes
     Category article;

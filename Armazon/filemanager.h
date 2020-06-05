@@ -7,13 +7,20 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QDir>
+
+/*
+ * FILE MANAGER
+ * Se encarga de administrar los archivos .txt, los sobreescribe, los lee,...
+ */
 struct FileManager {
 
 public:
     FileManager();
 
+    //LEE CADA LINEA DEL ARCHIVO
     static QString readFile(QString path);
 
+    //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING
     static QStringList splitFile(QString path);
 
     static void writeFileA(QString string, QString path);

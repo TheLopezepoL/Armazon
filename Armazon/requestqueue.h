@@ -2,6 +2,7 @@
 #define REQUESTQUEUE_H
 #include "request.h"
 
+//NODO DE COLA SOLICITUD
 struct NodeRequest {
     Request* data;
     NodeRequest* nxt;
@@ -9,6 +10,7 @@ struct NodeRequest {
     NodeRequest();
 };
 
+//COLA SOLICITUD
 struct RequestQueue {
     NodeRequest* first;
     NodeRequest* last;
