@@ -10,7 +10,7 @@ struct Client {
     //NOMBRE DEL CLIENTE
     QString name;
     //PRIORIDAD 1-10
-    short priority;
+    int priority;
 
     Client();
 };
