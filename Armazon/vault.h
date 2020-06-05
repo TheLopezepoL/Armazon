@@ -2,9 +2,9 @@
 #define VAULT_H
 
 
-class Vault
-{
-public:
+struct Vault {
+
+
     Vault();
 };
 

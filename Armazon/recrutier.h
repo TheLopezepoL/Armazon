@@ -2,9 +2,7 @@
 #define RECRUTIER_H
 
 
-class Recrutier
-{
-public:
+struct Recrutier {
     Recrutier();
 };
 

@@ -2,9 +2,8 @@
 #define BILLER_H
 
 
-class Biller
-{
-public:
+struct Biller {
+
     Biller();
 };
 

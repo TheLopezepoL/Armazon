@@ -2,9 +2,7 @@
 #define CHECKOUT_H
 
 
-class CheckOut
-{
-public:
+struct CheckOut {
     CheckOut();
 };
 

@@ -2,9 +2,7 @@
 #define BALANCER_H
 
 
-class Balancer
-{
-public:
+struct Balancer {
     Balancer();
 };
 

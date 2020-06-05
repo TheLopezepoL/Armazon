@@ -17,35 +17,39 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     article.cpp \
+    articlelist.cpp \
     balancer.cpp \
     biller.cpp \
     checkout.cpp \
     client.cpp \
-    doblelinkedlist.cpp \
+    clientlist.cpp \
     factory.cpp \
     main.cpp \
     mainwindow.cpp \
     order.cpp \
-    queue.cpp \
+    orderqueue.cpp \
     recrutier.cpp \
     request.cpp \
-    simplelist.cpp \
+    requestqueue.cpp \
+    threadfabrica.cpp \
     vault.cpp
 
 HEADERS += \
     article.h \
+    articlelist.h \
     balancer.h \
     biller.h \
     checkout.h \
     client.h \
-    doblelinkedlist.h \
+    clientlist.h \
     factory.h \
     mainwindow.h \
     order.h \
-    queue.h \
+    orderqueue.h \
     recrutier.h \
     request.h \
-    simplelist.h \
+    requestqueue.h \
+    threadfabrica.h \
     vault.h
 
 FORMS += \

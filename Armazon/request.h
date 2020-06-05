@@ -1,10 +1,13 @@
 #ifndef REQUEST_H
 #define REQUEST_H
+#include "article.h"
 
 
-class Request
-{
-public:
+struct Request {
+    Article* article;
+    int total;
+    int reserved;
+
     Request();
 };
 

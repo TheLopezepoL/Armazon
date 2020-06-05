@@ -2,9 +2,8 @@
 #define FACTORY_H
 
 
-class Factory
-{
-public:
+struct Factory {
+
     Factory();
 };
 
