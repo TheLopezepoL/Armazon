@@ -2,43 +2,32 @@
 
 FileManager::FileManager(){}
 
-QString FileManager::readOrder(QString path){
+QString FileManager::readFile(QString path){
     QString content = "";
     QFile inputFile(path);
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text)){
-       QTextStream in(&inputFile);
-       int cont = 0;
-       while (!in.atEnd()){
-          QString line = in.readLine();
-          if (cont<2)
-            content.append(line+"~");
-          else {
-              int word = 0;
-              while(word<line.size()){
-                  if (line.data()[word]!='\t')
-                      content.append(line.data()[word]);
-                  else
-                      content.append("#");
-                  word++;
-              }
-              content.append("~");
-          }
-          cont++;
-       }
-       inputFile.close();
-    } else
+        QTextStream in(&inputFile);
+        while(!in.atEnd()){
+            QString line = in.readLine();
+            int word = 0;
+            while(word < line.size()){
+                if (line.data()[word] != '\t')
+                    content.append(line.data()[word]);
+                else
+                    content.append("; ");
+                word++;
+            }
+            content.append("*");
+        }
+        inputFile.close();
+    }
+    else
         content = "ERROR - READ FILE ("+path+")";
     return content;
 }
 
-QString FileManager::readClient(QString path){
-    QString content = "";
-    QFile inputFile(path);
-        
-}
-
-QStringList FileManager::splitFile(QString path){
-    return readOrder(path).split("~");
+QStringList FileManager::splitFile(QString text){
+    return text.split("*");
 }
 
 void FileManager::writeFileA(QString string, QString path){

@@ -17,17 +17,11 @@ struct FileManager {
 public:
     FileManager();
 
-    //LEE CADA LINEA DEL ARCHIVO (PEDIDOS)
-    static QString readOrder(QString path);
+    //LEE CADA LINEA DEL ARCHIVO
+    static QString readFile(QString path);
 
-    //LEE CADA LINEA DEL ARCHIVO (CLIENTES)
-    static QString readClient(QString path);
-
-    //LEE CADA LINEA DEL ARCHIVO (ARTICULOS)
-    static QString readArticles(QString path);
-
-    //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING (para readOrder)
-    static QStringList splitFile(QString path);
+    //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING
+    static QStringList splitFile(QString text);
 
     //ESCRIBE DESPUES DE LA ULTIMA LINEA DE UN ARCHIVO
     static void writeFileA(QString string, QString path);
