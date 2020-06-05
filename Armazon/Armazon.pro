@@ -24,6 +24,7 @@ SOURCES += \
     client.cpp \
     clientlist.cpp \
     factory.cpp \
+    filemanager.cpp \
     main.cpp \
     mainwindow.cpp \
     order.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     client.h \
     clientlist.h \
     factory.h \
+    filemanager.h \
     mainwindow.h \
     order.h \
     orderqueue.h \

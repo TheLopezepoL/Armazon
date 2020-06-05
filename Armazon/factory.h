@@ -1,10 +1,18 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
+#include "orderqueue.h"
 
-struct Factory {
+struct Factory{
+    //Attributes
+    Category article;
+    OrderQueue orderqueue;
 
-    Factory();
+    //Constructors
+    Factory(Category _article){
+        article = _article;
+    }
+
 };
 
 #endif // FACTORY_H
