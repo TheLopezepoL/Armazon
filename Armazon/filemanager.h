@@ -17,10 +17,16 @@ struct FileManager {
 public:
     FileManager();
 
+<<<<<<< Updated upstream
     //LEE CADA LINEA DEL ARCHIVO
     static QString readFile(QString path);
 
     //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING
+=======
+    //LEE CADA LINEA DEL ARCHIVO (PEDIDOS,CLIENTES,ARTICULOS,...)
+    static QString reader(QString path);
+    //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING (para readOrder)
+>>>>>>> Stashed changes
     static QStringList splitFile(QString path);
 
     static void writeFileA(QString string, QString path);

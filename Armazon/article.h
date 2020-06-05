@@ -8,12 +8,13 @@ enum Category {
     B,
     C,
     Special
+
 };
 
 struct Article {
     //Attributes
     //CODIGO ARTICULO
-    int id;
+    QString id;
     //CANTIDAD EN ALMACEN
     int stock;
     //DURACION DE FABRICACION
@@ -23,13 +24,16 @@ struct Article {
     //TIPO DE ARTICULO
     Category category;
 
-    Article(int id_,int stock_,int time_,QString position_,Category category_){
+    Article(QString id_,int stock_,int time_,QString position_,Category category_){
         id = id_;
         stock = stock_;
         time = time_;
         position = position_;
         category = category_;
     }
+
+    //IMPRIMIR
+    void imprimir();
 };
 
 #endif // ARTICLE_H

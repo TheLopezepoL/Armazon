@@ -7,6 +7,7 @@ struct NodeClient {
     Client* data;
     NodeClient* nxt;
 
+<<<<<<< Updated upstream
     NodeClient(Client* _data){
         data = _data;
         nxt = nullptr;
@@ -15,6 +16,16 @@ struct NodeClient {
     //Compara un data recibido con el del mismo nodo
     bool compare(QString _data){
             return this->data->id == _data;
+=======
+    NodeClient(Client *data_){
+        data = data_;
+        nxt = nullptr;
+    };
+    //Methods
+    //Compara un data recibido con el del mismo nodo
+    bool compare(QString data){
+            return this->data->id == data;
+>>>>>>> Stashed changes
         }
 };
 
@@ -22,10 +33,16 @@ struct NodeClient {
 struct SimpleList {
     NodeClient* first;
 
+<<<<<<< Updated upstream
     //Constructor
     SimpleList(){
         first =nullptr;
     }
+=======
+    SimpleList(){
+        first = nullptr;
+    };
+>>>>>>> Stashed changes
 
     //Methods
     void append(Client* data);
