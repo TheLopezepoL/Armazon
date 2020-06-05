@@ -7,17 +7,30 @@ struct NodeClient {
     Client* data;
     NodeClient* nxt;
 
-    NodeClient();
+    NodeClient(Client* _data){
+        data = _data;
+        nxt = nullptr;
+    }
+
+    //Compara un data recibido con el del mismo nodo
+    bool compare(QString _data){
+            return this->data->id == _data;
+        }
 };
 
 //LISTA SIMPLE DE CLIENTES
 struct SimpleList {
     NodeClient* first;
 
-    SimpleList();
+    //Constructor
+    SimpleList(){
+        first =nullptr;
+    }
 
-    void append(Client data);
-    NodeClient* deleteIndex(int index);
+    //Methods
+    void append(Client* data);
+    NodeClient* searchClient(QString id);
+    void printList();
 
 };
 

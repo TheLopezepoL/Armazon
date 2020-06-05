@@ -12,7 +12,13 @@ struct Client {
     //PRIORIDAD 1-10
     short priority;
 
-    Client();
+    //Constructors
+    Client(int code, QString name_,short priority_){
+        id =code;
+        name=name_;
+        priority = priority_;
+    };
+    //Methods
 };
 
 #endif // CLIENT_H
