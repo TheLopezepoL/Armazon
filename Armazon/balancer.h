@@ -1,5 +1,5 @@
 #ifndef BALANCER_H
-#define
+#define BALANCER_H
 #include <QThread>
 #include "orderqueue.h"
 
