@@ -9,7 +9,16 @@ struct NodeArticle {
     NodeArticle* nxt;
     NodeArticle* prv;
 
-    NodeArticle();
+    NodeArticle(Article* _data){
+        data = _data;
+        nxt = prv = nullptr;
+    }
+
+    //Methods
+    //Compara un data recibido con el del mismo nodo
+    bool compare(QString data){
+            return this->data->id == data;
+        }
 };
 
 
@@ -23,7 +32,8 @@ struct ArticleList {
 
     //Methods
     void append(Article* data);
-    NodeArticle* deleteIndex(int index);
+    NodeArticle* searchArticle(QString id);
+    void printList();
 };
 
 #endif // ARTICLELIST_H

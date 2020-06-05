@@ -1022,7 +1022,41 @@ articlelist.o: ../Armazon/articlelist.cpp ../Armazon/articlelist.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o articlelist.o ../Armazon/articlelist.cpp
 
 balancer.o: ../Armazon/balancer.cpp ../Armazon/balancer.h
@@ -1452,23 +1486,7 @@ mainwindow.o: ../Armazon/mainwindow.cpp ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Armazon/mainwindow.cpp
 
 order.o: ../Armazon/order.cpp ../Armazon/order.h \

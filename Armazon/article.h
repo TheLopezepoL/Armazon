@@ -23,7 +23,13 @@ struct Article {
     //TIPO DE ARTICULO
     Category category;
 
-    Article();
+    Article(int id_,int stock_,int time_,QString position_,Category category_){
+        id = id_;
+        stock = stock_;
+        time = time_;
+        position = position_;
+        category = category_;
+    }
 };
 
 #endif // ARTICLE_H
