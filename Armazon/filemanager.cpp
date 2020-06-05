@@ -2,12 +2,9 @@
 
 FileManager::FileManager(){}
 
-QString FileManager::readFile(QString path){
+QString FileManager::readOrder(QString path){
     QString content = "";
     QFile inputFile(path);
-    if (!inputFile.exists()){
-        qDebug() << "no exists";
-    }
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text)){
        QTextStream in(&inputFile);
        int cont = 0;
@@ -34,8 +31,14 @@ QString FileManager::readFile(QString path){
     return content;
 }
 
+QString FileManager::readClient(QString path){
+    QString content = "";
+    QFile inputFile(path);
+        
+}
+
 QStringList FileManager::splitFile(QString path){
-    return readFile(path).split("~");
+    return readOrder(path).split("~");
 }
 
 void FileManager::writeFileA(QString string, QString path){
