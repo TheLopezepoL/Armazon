@@ -1,7 +1,5 @@
 #include "balancer.h"
 
-Balancer::Balancer() {}
-
 void Balancer::__init__(){
     pause = false;
     play = true;

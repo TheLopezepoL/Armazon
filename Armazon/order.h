@@ -9,11 +9,17 @@ struct Order {
     int orderNum;
     //CODIGO DEL CLIENTE QUE ENVIO EL PEDIDO
     int clientID;
-    //COLA DE PEDIDOS
+    //ARTICULOS
     RequestQueue requestQueue;
-
-
-    Order();
+    //Constructor
+    Order(int idOrder, int idClient,RequestQueue _requestQueue){
+        orderNum = idOrder;
+        clientID = idClient;
+        requestQueue = _requestQueue;
+    }
+    //Method
+    void changeDoneState();
+    void imprimir();
 
 };
 

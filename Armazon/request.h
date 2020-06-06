@@ -5,14 +5,22 @@
 //SOLICITUD: LLEVA UN PUNTERO A UN ARTICULO Y DETERMINA SI LA ORDEN ESTA COMPLETA O NO
 struct Request {
     //ARTICULO
-    Article* article;
+    QString article;
     //TOTAL DE PRODUCTOS PEDIDOS
     int total;
     //SI HAY PRODUCTOS DISPONIBLES EN ALMACEN, LOS DEPOSITA AQUI.
     int reserved;
 
     //Constructor
-    Request();
+    //REQUEST RESERVED SIEMPRE EMPIEZA EN CERO
+    Request(QString article_, int total_){
+        article = article_;
+        total = total_;
+        reserved = 0;
+    };
+    //Methods
+    void imprimir();
+    void sumReserved(int num);
 };
 
 #endif // REQUEST_H

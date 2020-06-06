@@ -39,7 +39,8 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
  * D: Lee la expresion creada con la lista de articulos, separa el string creando articulos y crea una lista articulos
  */
 
-ArticleList *StructCreator ::articleListCreator(QString expresion){
+ArticleList *StructCreator ::articleListCreator(){
+    QString expresionClients = this->expresion;
     ArticleList *listaArticulos = new ArticleList();
     int counter = 0;
     QString tmp = "";
@@ -95,7 +96,8 @@ Client * StructCreator::clientCreator(QString id, QString name, QString priority
  * D: Lee la expresion creada con la lista de clientes, separa el string creando articulos y crea una lista articulos
  */
 
-SimpleList *StructCreator ::clientListCreator(QString expresionClients){
+SimpleList *StructCreator ::clientListCreator(){
+    QString expresionClients = this->expresion;
     SimpleList *listaClientes = new SimpleList();
     int counter = 0;
     QString tmp = "";
@@ -128,3 +130,45 @@ Client *StructCreator::clientString(QString expresion){
     return nuevo;
 }
 
+/* Creador Struct Pedido
+ * E: Un string
+ * S: Un pedido
+ * D: Transforma el string en un pedido
+*/
+Order *StructCreator::orderString(QString expresion){
+    bool ok;
+    QStringList newExpresion = expresion.split("*");
+    newExpresion.removeLast();
+    RequestQueue listaArtOr = RequestQueue();
+    qDebug() << newExpresion;
+    int counter = 0;
+    while (counter < newExpresion.size()) {
+        if (counter != 1 && counter != 0 && counter){
+            listaArtOr.append(requestString(newExpresion[counter]));
+        }
+        ++counter;
+    }
+
+    Order *order = new Order(newExpresion[0].toInt(&ok),newExpresion[1].toInt(&ok),listaArtOr);
+    order->imprimir();
+    return order;
+}
+
+/*Creador Request
+ * E: Un qstring
+ * S: Un request
+ * D: Crea un request con la lista dada
+ */
+Request *StructCreator::requestString(QString expresion){
+    bool ok;
+    QStringList newExpresion = expresion.split("; ");
+    //qDebug() << newExpresion;
+    Request *nuevo = new Request(newExpresion[0],newExpresion[1].toInt(&ok));
+    return nuevo;
+}
+
+/*Creador de Cola de Pedidos
+ */
+OrderQueue *StructCreator::orderQueueCreator(){
+    return nullptr;
+}

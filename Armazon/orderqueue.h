@@ -7,7 +7,13 @@ struct NodeOrder {
     Order* data;
     NodeOrder* nxt;
 
-    NodeOrder();
+    NodeOrder(Order *data_){
+        data = data_;
+        nxt = nullptr;
+    };
+    //Methods
+    void imprimir();
+
 };
 //COLA DE PEDIDOS
 struct OrderQueue {

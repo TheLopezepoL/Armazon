@@ -5,9 +5,15 @@
 //NODO DE COLA SOLICITUD
 struct NodeRequest {
     Request* data;
-    NodeRequest* nxt;
+    NodeRequest* nxt, *prv;
 
-    NodeRequest();
+    NodeRequest(Request *data_){
+        data = data_;
+        nxt = prv = nullptr;
+    }
+
+    //Metodos
+    void imprimir();
 };
 
 //COLA SOLICITUD
@@ -15,10 +21,13 @@ struct RequestQueue {
     NodeRequest* first;
     NodeRequest* last;
 
-    RequestQueue();
-
-    void append(Request data);
-    NodeRequest* pop();
+    RequestQueue(){
+        first = last = nullptr;
+    };
+    //Methods
+    void append(Request *data);
+    NodeRequest *search(QString id);
+    void imprimir();
 
 };
 #endif // REQUESTQUEUE_H

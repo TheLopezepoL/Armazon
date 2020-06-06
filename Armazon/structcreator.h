@@ -4,19 +4,22 @@
 #include "article.h"
 #include "articlelist.h"
 #include "order.h"
+#include "orderqueue.h"
 #include "clientlist.h"
 
 struct StructCreator{
     //Attributes (Listas Dadas/Orden/Clientes/Articulos)
-    QString data;
+    QString expresion;
 
     //Constructors
     StructCreator (QString _data){
-        data = _data;
+        expresion = _data;
     }
 
     //Methods
     //STRING SEPARATOR
+    Request *requestString(QString expresion);
+    Order *orderString(QString expresion);
     Client *clientString(QString expresion);
     Article *articleString(QString expresion);
     //CATEGORY DETERMINER
@@ -28,9 +31,9 @@ struct StructCreator{
     //Creador de Pedido
     Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
     //CREADOR DE LISTAS
-    ArticleList *articleListCreator(QString expresionArticles);
-    SimpleList *clientListCreator(QString expresionClients);
-    //Orderqueue(?)
+    ArticleList *articleListCreator();
+    SimpleList *clientListCreator();
+    OrderQueue *orderQueueCreator();
 };
 
 #endif // STRUCTCREATOR_H

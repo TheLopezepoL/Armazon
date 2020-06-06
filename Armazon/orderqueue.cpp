@@ -1,6 +1,6 @@
 #include "orderqueue.h"
-
-OrderQueue::OrderQueue()
-{
-
+#include <QDebug>
+void NodeOrder::imprimir(){
+    qDebug() << this->data->clientID;
+    qDebug() << this->data->orderNum;
 }

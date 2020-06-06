@@ -13,13 +13,22 @@ int main(int argc, char *argv[])
     qDebug() <<"    LISTA ARTICULOS ";
     qDebug() << articulos;
     StructCreator *listaArt = new StructCreator(articulos);
-    listaArt->articleListCreator(articulos);
+    listaArt->articleListCreator();
     //LISTA CLIENTES
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
     qDebug() <<"    LISTA Clientes ";
     qDebug() << clientes;
     StructCreator *listaCli = new StructCreator(clientes);
-    listaCli->clientListCreator(clientes);
+    listaCli->clientListCreator();
+    //PEDIDO
+    qDebug() <<"    PEDIDO EJEMPLO ";
+    QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/prueba.txt");
+    //qDebug() << pedido;
+    StructCreator *orderCreator = new StructCreator(pedido);
+    orderCreator->orderString(pedido);
+    //COLA DE PEDIDOS
+    qDebug() <<"    COLA PEDIDOS ";
+
     //SEE DIRECTORY
     //qDebug() << FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos");
     //FILE RELOCATOR
