@@ -3,6 +3,8 @@
 #include "requestqueue.h"
 //ESTRUCTURA DEL PEDIDO
 struct Order {
+    //BOOL PARA DETERMINAR COMPLETADO
+    bool done;
     //CODIGO DEL PEDIDO
     int orderNum;
     //CODIGO DEL CLIENTE QUE ENVIO EL PEDIDO

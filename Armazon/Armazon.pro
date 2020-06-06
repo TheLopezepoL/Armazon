@@ -32,6 +32,7 @@ SOURCES += \
     recrutier.cpp \
     request.cpp \
     requestqueue.cpp \
+    structcreator.cpp \
     threadfabrica.cpp \
     vault.cpp
 
@@ -51,6 +52,7 @@ HEADERS += \
     recrutier.h \
     request.h \
     requestqueue.h \
+    structcreator.h \
     threadfabrica.h \
     vault.h
 

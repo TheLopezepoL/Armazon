@@ -28,7 +28,9 @@ struct ArticleList {
     //Attributes
     NodeArticle* first;
     //Constructor
-    ArticleList();
+    ArticleList(){
+        first = nullptr;
+    };
 
     //Methods
     void append(Article* data);

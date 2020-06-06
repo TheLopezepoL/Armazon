@@ -1,6 +1,9 @@
 #include "client.h"
 
-Client::Client()
-{
-
+#include <QDebug>
+void Client::imprimir(){
+    qDebug() <<"ID Cliente: " << this->id;
+    qDebug() <<"Nombre Cliente: " << this->name;
+    qDebug() <<"Priority: " << this->priority;
+    qDebug() << "";
 }

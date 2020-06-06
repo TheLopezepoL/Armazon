@@ -50,8 +50,7 @@ NodeArticle * ArticleList::searchArticle(QString idArticulo){
 void ArticleList::printList(){
     NodeArticle *tmp = first;
     while (tmp != nullptr){
-        qDebug() << "Article" << tmp->data->id;
+        tmp->data->imprimir();
         tmp = tmp->nxt;
     }
 }
-

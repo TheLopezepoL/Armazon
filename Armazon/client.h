@@ -12,7 +12,14 @@ struct Client {
     //PRIORIDAD 1-10
     int priority;
 
-    Client();
+    //Constructor
+    Client(int _id, QString _name, int _priority){
+        id = _id;
+        name = _name;
+        priority = _priority;
+       }
+       //Methods
+       void imprimir();
 };
 
 #endif // CLIENT_H
