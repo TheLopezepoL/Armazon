@@ -7,7 +7,7 @@ void Order::changeDoneState(){
 
 //IMPRIMIR ORDER
 void Order::imprimir(){
-    qDebug() << "";
+    qDebug() << "----------------------------------";
     qDebug() <<"ID de Pedido" << this->orderNum;
     qDebug() << "";
     qDebug() <<"ID de Cliente" << this->clientID;
@@ -15,5 +15,5 @@ void Order::imprimir(){
     qDebug() <<"Estado: " << this->done;
     qDebug() << "";
     this->requestQueue.imprimir();
-    qDebug() << "";
+    qDebug() << "----------------------------------";
 }

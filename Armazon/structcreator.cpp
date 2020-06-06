@@ -1,5 +1,5 @@
 #include "structcreator.h"
-
+#include "filemanager.h"
 #include <QDebug>
 
 
@@ -34,13 +34,12 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
 }
 
 /*Creador de la Lista Articulos
- * E: Un QString hecho con las lineas del archivo
+ * E: No tiene
  * S: Una Lista de Articulos
  * D: Lee la expresion creada con la lista de articulos, separa el string creando articulos y crea una lista articulos
  */
 
-ArticleList *StructCreator ::articleListCreator(){
-    QString expresionClients = this->expresion;
+ArticleList *StructCreator ::articleListCreator(QString expresion){
     ArticleList *listaArticulos = new ArticleList();
     int counter = 0;
     QString tmp = "";
@@ -91,13 +90,12 @@ Client * StructCreator::clientCreator(QString id, QString name, QString priority
 }
 
 /*Creador de la Lista CLientes
- * E: Un QString hecho con las lineas del archivo
+ * E: No tiene
  * S: Una Lista de Clientes
  * D: Lee la expresion creada con la lista de clientes, separa el string creando articulos y crea una lista articulos
  */
 
-SimpleList *StructCreator ::clientListCreator(){
-    QString expresionClients = this->expresion;
+SimpleList *StructCreator ::clientListCreator(QString expresionClients){
     SimpleList *listaClientes = new SimpleList();
     int counter = 0;
     QString tmp = "";
@@ -140,7 +138,6 @@ Order *StructCreator::orderString(QString expresion){
     QStringList newExpresion = expresion.split("*");
     newExpresion.removeLast();
     RequestQueue listaArtOr = RequestQueue();
-    qDebug() << newExpresion;
     int counter = 0;
     while (counter < newExpresion.size()) {
         if (counter != 1 && counter != 0 && counter){
@@ -150,12 +147,11 @@ Order *StructCreator::orderString(QString expresion){
     }
 
     Order *order = new Order(newExpresion[0].toInt(&ok),newExpresion[1].toInt(&ok),listaArtOr);
-    order->imprimir();
     return order;
 }
 
 /*Creador Request
- * E: Un qstring
+ * E: No tiene
  * S: Un request
  * D: Crea un request con la lista dada
  */
@@ -168,7 +164,17 @@ Request *StructCreator::requestString(QString expresion){
 }
 
 /*Creador de Cola de Pedidos
+ * E: Una lista con los nombres de los pedidos
+ * S: Una cola de pedidos
+ * D: Crea una cola de Pedidos
  */
-OrderQueue *StructCreator::orderQueueCreator(){
-    return nullptr;
+OrderQueue *StructCreator::orderQueueCreator(QStringList pedidos){
+    OrderQueue *cola = new OrderQueue();
+    for (int i = 0 ; i < pedidos.size(); i++){
+        //"/home/rev/Documents/GitHub/Armazon/Pedidos/"
+        QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/"+pedidos[i]);
+        cola->append(orderString(pedido));
+    }
+    cola->imprimir();
+    return cola;
 }

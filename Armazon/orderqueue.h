@@ -18,14 +18,17 @@ struct NodeOrder {
 //COLA DE PEDIDOS
 struct OrderQueue {
     //TOP
-    NodeOrder* first;
-    //LAST(?)
-    NodeOrder* last;
+    NodeOrder* front;
 
-    OrderQueue();
+    OrderQueue(){
+        front = nullptr;
+    };
     //METHODS
-    void append(Order data);
+    void append(Order *data);
+    bool isEmpty();
     NodeOrder* pop();
+    void imprimir();
+    NodeOrder *returnFront();
 
 };
 

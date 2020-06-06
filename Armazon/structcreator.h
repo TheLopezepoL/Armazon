@@ -15,25 +15,24 @@ struct StructCreator{
     StructCreator (QString _data){
         expresion = _data;
     }
-
     //Methods
     //STRING SEPARATOR
-    Request *requestString(QString expresion);
-    Order *orderString(QString expresion);
-    Client *clientString(QString expresion);
-    Article *articleString(QString expresion);
+    static Request *requestString(QString expresion);
+    static Order *orderString(QString expresion);
+    static Client *clientString(QString expresion);
+    static Article *articleString(QString expresion);
     //CATEGORY DETERMINER
-    Category determinerC(QString category);
+    static Category determinerC(QString category);
     //STRUCTS BASICOS
-    Article *articleCreator(QString idArticle, QString quantity, QString time, QString category, QString location);
+    static Article *articleCreator(QString idArticle, QString quantity, QString time, QString category, QString location);
     //Creador de Cliente
-    Client * clientCreator(QString id, QString name, QString priority);
+    static Client * clientCreator(QString id, QString name, QString priority);
     //Creador de Pedido
-    Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
+    static Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
     //CREADOR DE LISTAS
-    ArticleList *articleListCreator();
-    SimpleList *clientListCreator();
-    OrderQueue *orderQueueCreator();
+    static ArticleList *articleListCreator(QString _data);
+    static SimpleList *clientListCreator(QString _data);
+    static OrderQueue *orderQueueCreator(QStringList pedidos);
 };
 
 #endif // STRUCTCREATOR_H
