@@ -10,15 +10,15 @@ struct Order {
     //CODIGO DEL CLIENTE QUE ENVIO EL PEDIDO
     int clientID;
     //ARTICULOS
-    RequestQueue requestQueue;
+    RequestList* requestQueue;
     //Constructor
-    Order(int idOrder, int idClient,RequestQueue _requestQueue){
+    Order(int idOrder, int idClient,RequestList* _requestQueue){
         orderNum = idOrder;
         clientID = idClient;
         requestQueue = _requestQueue;
     }
     //Method
-    void changeDoneState();
+    void isDone();
     void imprimir();
 
 };

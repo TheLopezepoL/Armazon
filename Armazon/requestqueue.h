@@ -17,13 +17,18 @@ struct NodeRequest {
 };
 
 //COLA SOLICITUD
-struct RequestQueue {
+struct RequestList {
     NodeRequest* first;
     NodeRequest* last;
+    QMutex* mutex;
 
-    RequestQueue(){
+    RequestList(){};
+
+    RequestList(QMutex* mutex){
         first = last = nullptr;
+        this->mutex = mutex;
     };
+
     //Methods
     void append(Request *data);
     NodeRequest *search(QString id);

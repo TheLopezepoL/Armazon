@@ -10,6 +10,8 @@ struct Request {
     int total;
     //SI HAY PRODUCTOS DISPONIBLES EN ALMACEN, LOS DEPOSITA AQUI.
     int reserved;
+    //CANTIDAD FABRICADA DEL ARTICULO
+    int created;
 
     //Constructor
     //REQUEST RESERVED SIEMPRE EMPIEZA EN CERO
@@ -17,6 +19,7 @@ struct Request {
         article = article_;
         total = total_;
         reserved = 0;
+        created = 0;
     };
     //Methods
     void imprimir();

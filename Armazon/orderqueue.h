@@ -19,9 +19,13 @@ struct NodeOrder {
 struct OrderQueue {
     //TOP
     NodeOrder* front;
+    QMutex *mutex;
 
-    OrderQueue(){
+    OrderQueue(){}
+
+    OrderQueue(QMutex* mutex){
         front = nullptr;
+        this->mutex = mutex;
     };
     //METHODS
     void append(Order *data);

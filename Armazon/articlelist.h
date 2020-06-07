@@ -27,9 +27,14 @@ struct NodeArticle {
 struct ArticleList {
     //Attributes
     NodeArticle* first;
+    QMutex* mutex;
+
     //Constructor
-    ArticleList(){
+    ArticleList(){}
+
+    ArticleList(QMutex* mutex){
         first = nullptr;
+        this->mutex = mutex;
     };
 
     //Methods

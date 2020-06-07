@@ -137,7 +137,7 @@ Order *StructCreator::orderString(QString expresion){
     bool ok;
     QStringList newExpresion = expresion.split("*");
     newExpresion.removeLast();
-    RequestQueue listaArtOr = RequestQueue();
+    RequestList listaArtOr = RequestList();
     int counter = 0;
     while (counter < newExpresion.size()) {
         if (counter != 1 && counter != 0 && counter){
@@ -146,8 +146,9 @@ Order *StructCreator::orderString(QString expresion){
         ++counter;
     }
 
-    Order *order = new Order(newExpresion[0].toInt(&ok),newExpresion[1].toInt(&ok),listaArtOr);
-    return order;
+    //Order *order = new Order(newExpresion[0].toInt(&ok),newExpresion[1].toInt(&ok),listaArtOr);
+    //return order;
+    return nullptr;
 }
 
 /*Creador Request

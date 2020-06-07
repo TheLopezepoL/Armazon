@@ -3,6 +3,7 @@
 #include <QString>
 
 
+
 //ESTRUCTURA DE CLIENTE
 struct Client {
     //CODIGO

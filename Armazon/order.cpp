@@ -1,8 +1,16 @@
 #include "order.h"
 #include <QDebug>
 //CAMBIA EL ESTADO DEL PEDIDO
-void Order::changeDoneState(){
-    this->done = !this->done;
+void Order::isDone(){
+    NodeRequest* ptr = requestQueue->first;
+    while (ptr != nullptr){
+        if(ptr->data->total != (ptr->data->reserved + ptr->data->created)){
+            done = false;
+            return;
+        }
+        ptr = ptr->nxt;
+    }
+    done = true;
 }
 
 //IMPRIMIR ORDER
@@ -14,6 +22,6 @@ void Order::imprimir(){
     qDebug() << "";
     qDebug() <<"Estado: " << this->done;
     qDebug() << "";
-    this->requestQueue.imprimir();
+    this->requestQueue->imprimir();
     qDebug() << "----------------------------------";
 }

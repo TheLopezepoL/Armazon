@@ -14,7 +14,7 @@ void NodeRequest::imprimir(){
  * S: No tiene
  * D: Imprime la info del pedido
  */
-void RequestQueue::imprimir(){
+void RequestList::imprimir(){
     NodeRequest *tmp = first;
 
     while (tmp != nullptr) {
@@ -28,7 +28,7 @@ void RequestQueue::imprimir(){
  * S: No tiene
  * D: Agrega un request en la lista de requests
  */
-void RequestQueue::append(Request *data){
+void RequestList::append(Request *data){
     if (first == nullptr){
         first = new NodeRequest(data);
         last =first;
@@ -46,7 +46,7 @@ void RequestQueue::append(Request *data){
  * S: Un node request
  * D: Busca un request en la lista de requests. Si retorna nulo no existe
  */
-NodeRequest *RequestQueue::search(QString id){
+NodeRequest *RequestList::search(QString id){
     NodeRequest *tmp = first;
     while(tmp!=nullptr){
         if (tmp->data->article == id){

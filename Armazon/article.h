@@ -1,6 +1,8 @@
 #ifndef ARTICLE_H
 #define ARTICLE_H
 #include <QString>
+#include <QMutex>
+
 
 //ENUM TO DETERMINE THE TYPE OF ARTICLE
 enum Category {

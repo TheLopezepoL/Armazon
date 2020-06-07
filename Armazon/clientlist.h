@@ -1,6 +1,7 @@
 #ifndef CLIENTLIST_H
 #define CLIENTLIST_H
 #include "client.h"
+#include <QMutex>
 
 //NODO DE ESTRUCTURA CLIENTE
 struct NodeClient {
@@ -21,10 +22,14 @@ struct NodeClient {
 //LISTA SIMPLE DE CLIENTES
 struct SimpleList {
     NodeClient* first;
+    QMutex* mutex;
 
     //Constructor
-    SimpleList(){
+    SimpleList(){}
+
+    SimpleList(QMutex* mutex){
         first =nullptr;
+        this->mutex = mutex;
     };
 
     //Methods
