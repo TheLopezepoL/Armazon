@@ -31,10 +31,12 @@ void ArticleList::append(Article *article){
 NodeArticle * ArticleList::searchArticle(QString idArticulo){
     NodeArticle *tmp = first;
     while(tmp != nullptr){
+        //tmp->data->imprimir();
          if (tmp->compare(idArticulo))
             return tmp;
         tmp = tmp->nxt;
     }
+    //qDebug () << "EL ARTICULO "<< idArticulo <<" NO FUE ENCONTRADO";
     return nullptr;
 }
 

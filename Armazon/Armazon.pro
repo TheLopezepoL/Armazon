@@ -20,6 +20,7 @@ SOURCES += \
     articlelist.cpp \
     balancer.cpp \
     biller.cpp \
+    checker.cpp \
     checkout.cpp \
     client.cpp \
     clientlist.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     articlelist.h \
     balancer.h \
     biller.h \
+    checker.h \
     checkout.h \
     client.h \
     clientlist.h \

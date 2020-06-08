@@ -10,6 +10,8 @@ void Balancer::__init__(OrderQueue* pedidos, OrderQueue* fabricados, OrderQueue*
     this->articulos = articulos;
 }
 
+Balancer::Balancer(){}
+
 void Balancer::Pause(){
     pause = true;
 }
@@ -19,6 +21,7 @@ void Balancer::Unpause(){
 }
 
 void Balancer::run(){
+    qDebug()<<"alv";
     while (play){
         while (pause)
             sleep(1);

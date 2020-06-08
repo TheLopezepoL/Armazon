@@ -13,8 +13,6 @@ public:
     OrderQueue* alisto;
     ArticleList* articulos;
 
-
-
     bool play;
     bool pause;
 

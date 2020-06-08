@@ -25,7 +25,9 @@ struct SimpleList {
     QMutex* mutex;
 
     //Constructor
-    SimpleList(){}
+    SimpleList(){
+        first = nullptr;
+    }
 
     SimpleList(QMutex* mutex){
         first =nullptr;

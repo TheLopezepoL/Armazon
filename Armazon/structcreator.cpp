@@ -1,8 +1,9 @@
 #include "structcreator.h"
 #include "filemanager.h"
+#include "checker.h"
 #include <QDebug>
 
-
+//DETERMINA LA CATEGORIA DEL PRODUCTO
 Category StructCreator::determinerC(QString category){
 
     if (category == "A"){
@@ -25,7 +26,7 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
     int newQuant = quantity.toInt(&okay);
     int newTime = time.toInt(&okay);
     if (!okay){
-        qDebug() << "FAILED CONVERSION";
+        //qDebug() << "FAILED CONVERSION";
         return nullptr;
     }
     Article *nuevo = new Article(idArticle, newQuant, newTime, location, determinerC(category));
@@ -37,6 +38,7 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
  * E: No tiene
  * S: Una Lista de Articulos
  * D: Lee la expresion creada con la lista de articulos, separa el string creando articulos y crea una lista articulos
+ * SI RETORNA NULO ES QUE EL ARCHIVO VIENE CON ERRORES
  */
 
 ArticleList *StructCreator ::articleListCreator(QString expresion){
@@ -50,9 +52,16 @@ ArticleList *StructCreator ::articleListCreator(QString expresion){
         else {
             if (tmp== ""){
                 break;
+            }else
+                if (articleString(tmp) == nullptr) {
+                //SI ALGUN ARTUCULO VIENE CON ERRORES
+                qDebug() << "FAIL BUILDING AN ARTICLE";
+                return nullptr;
             }
+            else {
             listaArticulos->append(articleString(tmp));
             tmp = "";
+            }
         }
         ++counter;
     }
@@ -80,12 +89,11 @@ Article *StructCreator::articleString(QString expresion){
 Client * StructCreator::clientCreator(QString id, QString name, QString priority){
     bool okay;
     int newPrio = priority.toInt(&okay);
-    int newID = id.toInt(&okay);
     if (!okay){
         qDebug() << "FAILED CONVERSION";
         return nullptr;
     }
-    Client *nuevo = new Client(newID, name, newPrio);
+    Client *nuevo = new Client(id, name, newPrio);
     return nuevo;
 }
 
@@ -106,9 +114,14 @@ SimpleList *StructCreator ::clientListCreator(QString expresionClients){
         else {
             if (tmp== ""){
                 break;
+            }else if (clientString(tmp) == nullptr) {
+                qDebug() << "FAILED CONVERSION";
+                return nullptr;
             }
-            listaClientes->append(clientString(tmp));
-            tmp = "";
+            else{
+                listaClientes->append(clientString(tmp));
+                tmp = "";
+            }
         }
         ++counter;
     }
@@ -137,18 +150,17 @@ Order *StructCreator::orderString(QString expresion){
     bool ok;
     QStringList newExpresion = expresion.split("*");
     newExpresion.removeLast();
-    RequestList listaArtOr = RequestList();
+    int n1 = newExpresion[0].toInt(&ok);
+    RequestList *listaArtOr = new RequestList();
     int counter = 0;
     while (counter < newExpresion.size()) {
         if (counter != 1 && counter != 0 && counter){
-            listaArtOr.append(requestString(newExpresion[counter]));
+            listaArtOr->append(requestString(newExpresion[counter]));
         }
         ++counter;
     }
-
-    //Order *order = new Order(newExpresion[0].toInt(&ok),newExpresion[1].toInt(&ok),listaArtOr);
-    //return order;
-    return nullptr;
+    Order *order = new Order(n1,newExpresion[1],listaArtOr);
+    return order;
 }
 
 /*Creador Request
@@ -169,11 +181,14 @@ Request *StructCreator::requestString(QString expresion){
  * S: Una cola de pedidos
  * D: Crea una cola de Pedidos
  */
-OrderQueue *StructCreator::orderQueueCreator(QStringList pedidos){
+OrderQueue *StructCreator::orderQueueCreator(QStringList pedidos,SimpleList *clientes, ArticleList *articulos){
     OrderQueue *cola = new OrderQueue();
     for (int i = 0 ; i < pedidos.size(); i++){
-        //"/home/rev/Documents/GitHub/Armazon/Pedidos/"
         QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/"+pedidos[i]);
+        if (Checker::orderChecker(orderString(pedido),clientes,articulos,"/home/rev/Documents/GitHub/Armazon/Pedidos/"+pedidos[i])){
+            FileManager::fileRelocater("/home/rev/Documents/GitHub/Armazon/Pedidos","/home/rev/Documents/GitHub/Armazon/Invalidos",pedidos[i]);
+            continue;
+            }
         cola->append(orderString(pedido));
     }
     cola->imprimir();

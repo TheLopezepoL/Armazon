@@ -8,11 +8,11 @@ struct Order {
     //CODIGO DEL PEDIDO
     int orderNum;
     //CODIGO DEL CLIENTE QUE ENVIO EL PEDIDO
-    int clientID;
+    QString clientID;
     //ARTICULOS
     RequestList* requestQueue;
     //Constructor
-    Order(int idOrder, int idClient,RequestList* _requestQueue){
+    Order(int idOrder, QString idClient,RequestList* _requestQueue){
         orderNum = idOrder;
         clientID = idClient;
         requestQueue = _requestQueue;

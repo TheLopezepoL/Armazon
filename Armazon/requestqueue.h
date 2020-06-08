@@ -22,7 +22,9 @@ struct RequestList {
     NodeRequest* last;
     QMutex* mutex;
 
-    RequestList(){};
+    RequestList(){
+        first = last = nullptr;
+    };
 
     RequestList(QMutex* mutex){
         first = last = nullptr;

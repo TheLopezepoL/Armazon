@@ -28,6 +28,7 @@ NodeClient * SimpleList::searchClient(QString idClient){
             return tmp;
         tmp = tmp->nxt;
     }
+    //qDebug() << "CLIENTE NO ENCONTRADO";
     return nullptr;
 }
 

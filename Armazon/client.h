@@ -7,14 +7,14 @@
 //ESTRUCTURA DE CLIENTE
 struct Client {
     //CODIGO
-    int id;
+    QString id;
     //NOMBRE DEL CLIENTE
     QString name;
     //PRIORIDAD 1-10
     int priority;
 
     //Constructor
-    Client(int _id, QString _name, int _priority){
+    Client(QString _id, QString _name, int _priority){
         id = _id;
         name = _name;
         priority = _priority;

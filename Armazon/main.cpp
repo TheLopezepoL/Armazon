@@ -1,25 +1,20 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-//#include "filemanager.h"
-//#include "structcreator.h"
-#include "balancer.h"
+#include "filemanager.h"
+#include "structcreator.h"
+//#include "balancer.h"
+#include "checker.h"
 int main(int argc, char *argv[])
 {
-    /*
-    //FILE MANAGER
-    //QString hola = FileManager::readFile("/home/thelopezepol/Escritorio/C++/Armazon/Armazon/Articulos/Articulos");
-    //qDebug() << FileManager::splitFile(hola);
     //LISTA ARTICULOS
     QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
     qDebug() <<"-------------LISTA ARTICULOS------------- ";
-    //qDebug() << articulos;
-    StructCreator::articleListCreator(articulos);
+    ArticleList* articulos_ =  StructCreator::articleListCreator(articulos);
     //LISTA CLIENTES
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
     qDebug() <<"-------------LISTA Clientes-------------";
-    //qDebug() << clientes;
-    StructCreator::clientListCreator(clientes);
+    SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
     //PEDIDO
     qDebug() <<"-------------PEDIDO EJEMPLO-------------";
     QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/prueba.txt");
@@ -27,14 +22,10 @@ int main(int argc, char *argv[])
     orderCreator->orderString(pedido)->imprimir();
     //COLA DE PEDIDOS
     qDebug() <<"-------------COLA PEDIDOS-------------";
-    StructCreator::orderQueueCreator(FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"));
-
-    //SEE DIRECTORY
-    //qDebug() << FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos");
+    StructCreator::orderQueueCreator(FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"),clientes_,articulos_);
     //FILE RELOCATOR
-    //FileManager::fileRelocater("/home/rev/PROGRA1/Pedidos","/home/rev/PROGRA1/Invalidos","prueba.txt");
-    */
 
+/*
     QMutex* mutexPedidos = new QMutex();
     QMutex* mutexFabrica = new QMutex();
     QMutex* mutexAlisto = new QMutex();
@@ -92,7 +83,8 @@ int main(int argc, char *argv[])
 
     Balancer balancer;
     balancer.__init__(pedidos, fabricar, alisto, a0);
-
+    balancer.start();
+*/
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
