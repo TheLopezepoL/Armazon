@@ -41,6 +41,7 @@ struct ArticleList {
     void append(Article* data);
     NodeArticle* searchArticle(QString id);
     void printList();
+    int length();
 };
 
 #endif // ARTICLELIST_H

@@ -9,11 +9,9 @@
 
 struct StructCreator{
     //Attributes (Listas Dadas/Orden/Clientes/Articulos)
-    QString expresion;
 
     //Constructors
-    StructCreator (QString _data){
-        expresion = _data;
+    StructCreator (){
     }
     //Methods
     //STRING SEPARATOR
@@ -32,7 +30,7 @@ struct StructCreator{
     //CREADOR DE LISTAS
     static ArticleList *articleListCreator(QString _data);
     static SimpleList *clientListCreator(QString _data);
-    static OrderQueue *orderQueueCreator(QStringList pedidos,SimpleList *clientes, ArticleList *articulos);
+    static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos,SimpleList *clientes, ArticleList *articulos);
 };
 
 #endif // STRUCTCREATOR_H

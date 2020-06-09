@@ -56,3 +56,18 @@ void ArticleList::printList(){
         tmp = tmp->nxt;
     }
 }
+
+/*LENTGH
+ * E:
+ * S:
+ * D:
+ */
+int ArticleList::length(){
+    int i = 0;
+    NodeArticle *tmp = first;
+    while (tmp != nullptr) {
+        ++i;
+        tmp = tmp->nxt;
+    }
+    return i;
+}

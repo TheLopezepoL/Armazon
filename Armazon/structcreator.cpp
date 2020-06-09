@@ -65,7 +65,7 @@ ArticleList *StructCreator ::articleListCreator(QString expresion){
         }
         ++counter;
     }
-    listaArticulos->printList();
+    //listaArticulos->printList();
     return listaArticulos;
 }
 
@@ -125,7 +125,7 @@ SimpleList *StructCreator ::clientListCreator(QString expresionClients){
         }
         ++counter;
     }
-    listaClientes->printList();
+    //listaClientes->printList();
     return listaClientes;
 }
 
@@ -181,16 +181,16 @@ Request *StructCreator::requestString(QString expresion){
  * S: Una cola de pedidos
  * D: Crea una cola de Pedidos
  */
-OrderQueue *StructCreator::orderQueueCreator(QStringList pedidos,SimpleList *clientes, ArticleList *articulos){
+OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes, ArticleList *articulos){
     OrderQueue *cola = new OrderQueue();
     for (int i = 0 ; i < pedidos.size(); i++){
-        QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/"+pedidos[i]);
-        if (Checker::orderChecker(orderString(pedido),clientes,articulos,"/home/rev/Documents/GitHub/Armazon/Pedidos/"+pedidos[i])){
-            FileManager::fileRelocater("/home/rev/Documents/GitHub/Armazon/Pedidos","/home/rev/Documents/GitHub/Armazon/Invalidos",pedidos[i]);
+        QString pedido = FileManager::readFile(pathArmazon+"/Pedidos/"+pedidos[i]);
+        if (Checker::orderChecker(orderString(pedido),clientes,articulos,pathArmazon+"/Pedidos/"+pedidos[i])){
+            FileManager::fileRelocater(pathArmazon+"/Pedidos",pathArmazon+"/Invalidos",pedidos[i]);
             continue;
             }
         cola->append(orderString(pedido));
     }
-    cola->imprimir();
+    //cola->imprimir();
     return cola;
 }

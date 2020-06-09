@@ -17,8 +17,6 @@ void OrderQueue::imprimir(){
         tmp->imprimir();
         tmp = tmp->nxt;
     }
-    qDebug() << "   FINAL";
-
 }
 /*RETURN FRONT
  * E: No tiene

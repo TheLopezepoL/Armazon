@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Armazon/article.cpp \
+SOURCES       = ../Armazon/armazon.cpp \
+		../Armazon/article.cpp \
 		../Armazon/articlelist.cpp \
 		../Armazon/balancer.cpp \
 		../Armazon/biller.cpp \
@@ -72,7 +73,8 @@ SOURCES       = ../Armazon/article.cpp \
 		../Armazon/structcreator.cpp \
 		../Armazon/threadfabrica.cpp \
 		../Armazon/vault.cpp moc_mainwindow.cpp
-OBJECTS       = article.o \
+OBJECTS       = armazon.o \
+		article.o \
 		articlelist.o \
 		balancer.o \
 		biller.o \
@@ -304,7 +306,8 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/lex.prf \
-		../Armazon/Armazon.pro ../Armazon/article.h \
+		../Armazon/Armazon.pro ../Armazon/armazon.h \
+		../Armazon/article.h \
 		../Armazon/articlelist.h \
 		../Armazon/balancer.h \
 		../Armazon/biller.h \
@@ -322,7 +325,8 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Armazon/requestqueue.h \
 		../Armazon/structcreator.h \
 		../Armazon/threadfabrica.h \
-		../Armazon/vault.h ../Armazon/article.cpp \
+		../Armazon/vault.h ../Armazon/armazon.cpp \
+		../Armazon/article.cpp \
 		../Armazon/articlelist.cpp \
 		../Armazon/balancer.cpp \
 		../Armazon/biller.cpp \
@@ -793,8 +797,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Armazon/article.h ../Armazon/articlelist.h ../Armazon/balancer.h ../Armazon/biller.h ../Armazon/checker.h ../Armazon/checkout.h ../Armazon/client.h ../Armazon/clientlist.h ../Armazon/factory.h ../Armazon/filemanager.h ../Armazon/mainwindow.h ../Armazon/order.h ../Armazon/orderqueue.h ../Armazon/recrutier.h ../Armazon/request.h ../Armazon/requestqueue.h ../Armazon/structcreator.h ../Armazon/threadfabrica.h ../Armazon/vault.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Armazon/article.cpp ../Armazon/articlelist.cpp ../Armazon/balancer.cpp ../Armazon/biller.cpp ../Armazon/checker.cpp ../Armazon/checkout.cpp ../Armazon/client.cpp ../Armazon/clientlist.cpp ../Armazon/factory.cpp ../Armazon/filemanager.cpp ../Armazon/main.cpp ../Armazon/mainwindow.cpp ../Armazon/order.cpp ../Armazon/orderqueue.cpp ../Armazon/recrutier.cpp ../Armazon/request.cpp ../Armazon/requestqueue.cpp ../Armazon/structcreator.cpp ../Armazon/threadfabrica.cpp ../Armazon/vault.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Armazon/armazon.h ../Armazon/article.h ../Armazon/articlelist.h ../Armazon/balancer.h ../Armazon/biller.h ../Armazon/checker.h ../Armazon/checkout.h ../Armazon/client.h ../Armazon/clientlist.h ../Armazon/factory.h ../Armazon/filemanager.h ../Armazon/mainwindow.h ../Armazon/order.h ../Armazon/orderqueue.h ../Armazon/recrutier.h ../Armazon/request.h ../Armazon/requestqueue.h ../Armazon/structcreator.h ../Armazon/threadfabrica.h ../Armazon/vault.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Armazon/armazon.cpp ../Armazon/article.cpp ../Armazon/articlelist.cpp ../Armazon/balancer.cpp ../Armazon/biller.cpp ../Armazon/checker.cpp ../Armazon/checkout.cpp ../Armazon/client.cpp ../Armazon/clientlist.cpp ../Armazon/factory.cpp ../Armazon/filemanager.cpp ../Armazon/main.cpp ../Armazon/mainwindow.cpp ../Armazon/order.cpp ../Armazon/orderqueue.cpp ../Armazon/recrutier.cpp ../Armazon/request.cpp ../Armazon/requestqueue.cpp ../Armazon/structcreator.cpp ../Armazon/threadfabrica.cpp ../Armazon/vault.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Armazon/mainwindow.ui $(DISTDIR)/
 
 
@@ -961,6 +965,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+armazon.o: ../Armazon/armazon.cpp ../Armazon/armazon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o armazon.o ../Armazon/armazon.cpp
 
 article.o: ../Armazon/article.cpp ../Armazon/article.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
@@ -1226,7 +1233,49 @@ checker.o: ../Armazon/checker.cpp ../Armazon/checker.h \
 		../Armazon/article.h \
 		../Armazon/order.h \
 		../Armazon/requestqueue.h \
-		../Armazon/request.h
+		../Armazon/request.h \
+		../Armazon/filemanager.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDir \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o checker.o ../Armazon/checker.cpp
 
 checkout.o: ../Armazon/checkout.cpp ../Armazon/checkout.h
@@ -1621,11 +1670,6 @@ main.o: ../Armazon/main.cpp ../Armazon/mainwindow.h \
 		../Armazon/orderqueue.h \
 		../Armazon/clientlist.h \
 		../Armazon/client.h \
-		../Armazon/balancer.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../Armazon/checker.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Armazon/main.cpp
 
@@ -2097,7 +2141,8 @@ structcreator.o: ../Armazon/structcreator.cpp ../Armazon/structcreator.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDir \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
+		../Armazon/checker.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o structcreator.o ../Armazon/structcreator.cpp
 
 threadfabrica.o: ../Armazon/threadfabrica.cpp ../Armazon/threadfabrica.h

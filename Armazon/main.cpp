@@ -1,30 +1,27 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include "armazon.h"
 #include "filemanager.h"
 #include "structcreator.h"
 //#include "balancer.h"
-#include "checker.h"
+
 int main(int argc, char *argv[])
 {
+
     //LISTA ARTICULOS
     QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
     qDebug() <<"-------------LISTA ARTICULOS------------- ";
     ArticleList* articulos_ =  StructCreator::articleListCreator(articulos);
+    articulos_->printList();
     //LISTA CLIENTES
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
     qDebug() <<"-------------LISTA Clientes-------------";
     SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
-    //PEDIDO
-    qDebug() <<"-------------PEDIDO EJEMPLO-------------";
-    QString pedido = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Pedidos/prueba.txt");
-    StructCreator *orderCreator = new StructCreator(pedido);
-    orderCreator->orderString(pedido)->imprimir();
-    //COLA DE PEDIDOS
+    clientes_->printList();
     qDebug() <<"-------------COLA PEDIDOS-------------";
-    StructCreator::orderQueueCreator(FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"),clientes_,articulos_);
-    //FILE RELOCATOR
-
+    OrderQueue * cola = StructCreator::orderQueueCreator("/home/rev/Documents/GitHub/Armazon",FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"),clientes_,articulos_);
+    cola->imprimir();
 /*
     QMutex* mutexPedidos = new QMutex();
     QMutex* mutexFabrica = new QMutex();

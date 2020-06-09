@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    armazon.cpp \
     article.cpp \
     articlelist.cpp \
     balancer.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
     vault.cpp
 
 HEADERS += \
+    armazon.h \
     article.h \
     articlelist.h \
     balancer.h \
