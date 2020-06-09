@@ -25,6 +25,7 @@ SOURCES += \
     checkout.cpp \
     client.cpp \
     clientlist.cpp \
+    factory.cpp \
     filemanager.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -34,7 +35,6 @@ SOURCES += \
     request.cpp \
     requestqueue.cpp \
     structcreator.cpp \
-    threadfabrica.cpp \
     vault.cpp
 
 HEADERS += \
@@ -47,6 +47,7 @@ HEADERS += \
     checkout.h \
     client.h \
     clientlist.h \
+    factory.h \
     filemanager.h \
     mainwindow.h \
     order.h \
@@ -55,7 +56,6 @@ HEADERS += \
     request.h \
     requestqueue.h \
     structcreator.h \
-    threadfabrica.h \
     vault.h
 
 FORMS += \
