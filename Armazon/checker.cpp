@@ -39,3 +39,16 @@ bool Checker::orderChecker(Order *order, SimpleList *clientes,ArticleList *artic
         return false;
 
 }
+
+/* ARCHIVO ARTICULOS CHECKER
+ * E:
+ * S:
+ * D:
+ */
+bool Checker::articlesChecker(ArticleList *articulos){
+    NodeArticle *tmp = articulos->first;
+
+    while (tmp != nullptr) {
+
+    }
+}

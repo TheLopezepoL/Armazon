@@ -25,7 +25,7 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
     bool okay;
     int newQuant = quantity.toInt(&okay);
     int newTime = time.toInt(&okay);
-    if (!okay){
+    if (!okay or determinerC(category) == Special or newQuant<0){
         //qDebug() << "FAILED CONVERSION";
         return nullptr;
     }
@@ -41,7 +41,7 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
  * SI RETORNA NULO ES QUE EL ARCHIVO VIENE CON ERRORES
  */
 
-ArticleList *StructCreator ::articleListCreator(QString expresion){
+ArticleList *StructCreator ::articleListCreator(QString expresion,QString path){
     ArticleList *listaArticulos = new ArticleList();
     int counter = 0;
     QString tmp = "";
@@ -54,7 +54,9 @@ ArticleList *StructCreator ::articleListCreator(QString expresion){
                 break;
             }else
                 if (articleString(tmp) == nullptr) {
+                qDebug() << tmp;
                 //SI ALGUN ARTUCULO VIENE CON ERRORES
+                FileManager::writeFileA("EL ARHIVO VIENE CON ERRORES. REVISE EL ARTICULO: "+tmp[0]+tmp[1]+tmp[2],path + "/Articulos/Articulos");
                 qDebug() << "FAIL BUILDING AN ARTICLE";
                 return nullptr;
             }
@@ -65,6 +67,8 @@ ArticleList *StructCreator ::articleListCreator(QString expresion){
         }
         ++counter;
     }
+    //CHECKER
+
     //listaArticulos->printList();
     return listaArticulos;
 }

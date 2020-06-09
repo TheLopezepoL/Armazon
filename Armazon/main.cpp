@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     //LISTA ARTICULOS
     QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
     qDebug() <<"-------------LISTA ARTICULOS------------- ";
-    ArticleList* articulos_ =  StructCreator::articleListCreator(articulos);
+    ArticleList* articulos_ =  StructCreator::articleListCreator(articulos,"/home/rev/Documents/GitHub/Armazon");
     articulos_->printList();
     //LISTA CLIENTES
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");

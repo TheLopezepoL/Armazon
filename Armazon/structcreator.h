@@ -28,7 +28,7 @@ struct StructCreator{
     //Creador de Pedido
     static Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
     //CREADOR DE LISTAS
-    static ArticleList *articleListCreator(QString _data);
+    static ArticleList *articleListCreator(QString _data,QString path);
     static SimpleList *clientListCreator(QString _data);
     static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos,SimpleList *clientes, ArticleList *articulos);
 };
