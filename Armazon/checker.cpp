@@ -49,6 +49,9 @@ bool Checker::articlesChecker(ArticleList *articulos){
     NodeArticle *tmp = articulos->first;
 
     while (tmp != nullptr) {
-
+        if (articulos->timesArticle(tmp->data->id) > 1)
+            return true;
+        tmp = tmp->nxt;
     }
+    return false;
 }

@@ -36,7 +36,7 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
 
 /*Creador de la Lista Articulos
  * E: No tiene
- * S: Una Lista de Articulos
+ * S: Una Lista de Articulos. Si retorna nulo hay un error en el archivo
  * D: Lee la expresion creada con la lista de articulos, separa el string creando articulos y crea una lista articulos
  * SI RETORNA NULO ES QUE EL ARCHIVO VIENE CON ERRORES
  */
@@ -67,7 +67,11 @@ ArticleList *StructCreator ::articleListCreator(QString expresion,QString path){
         }
         ++counter;
     }
-    //CHECKER
+    if (Checker::articlesChecker(listaArticulos)){
+        FileManager::writeFileA("HAY UN ARTICULO REPETIDO",path + "/Articulos/Articulos");
+        qDebug() << "FAIL BUILDING AN ARTICLE";
+        return nullptr;
+    }
 
     //listaArticulos->printList();
     return listaArticulos;
@@ -103,7 +107,7 @@ Client * StructCreator::clientCreator(QString id, QString name, QString priority
 
 /*Creador de la Lista CLientes
  * E: No tiene
- * S: Una Lista de Clientes
+ * S: Una Lista de Clientes.Si retorna nulo hay un error en el archivo
  * D: Lee la expresion creada con la lista de clientes, separa el string creando articulos y crea una lista articulos
  */
 
@@ -182,7 +186,7 @@ Request *StructCreator::requestString(QString expresion){
 
 /*Creador de Cola de Pedidos
  * E: Una lista con los nombres de los pedidos
- * S: Una cola de pedidos
+ * S: Una cola de pedidos. Si retorna nulo hay un error en el archivo
  * D: Crea una cola de Pedidos
  */
 OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes, ArticleList *articulos){

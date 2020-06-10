@@ -61,6 +61,7 @@ SOURCES       = ../Armazon/armazon.cpp \
 		../Armazon/checkout.cpp \
 		../Armazon/client.cpp \
 		../Armazon/clientlist.cpp \
+		../Armazon/factory.cpp \
 		../Armazon/filemanager.cpp \
 		../Armazon/main.cpp \
 		../Armazon/mainwindow.cpp \
@@ -70,7 +71,6 @@ SOURCES       = ../Armazon/armazon.cpp \
 		../Armazon/request.cpp \
 		../Armazon/requestqueue.cpp \
 		../Armazon/structcreator.cpp \
-		../Armazon/threadfabrica.cpp \
 		../Armazon/vault.cpp moc_mainwindow.cpp
 OBJECTS       = armazon.o \
 		article.o \
@@ -81,6 +81,7 @@ OBJECTS       = armazon.o \
 		checkout.o \
 		client.o \
 		clientlist.o \
+		factory.o \
 		filemanager.o \
 		main.o \
 		mainwindow.o \
@@ -90,7 +91,6 @@ OBJECTS       = armazon.o \
 		request.o \
 		requestqueue.o \
 		structcreator.o \
-		threadfabrica.o \
 		vault.o \
 		moc_mainwindow.o
 DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -313,6 +313,7 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Armazon/checkout.h \
 		../Armazon/client.h \
 		../Armazon/clientlist.h \
+		../Armazon/factory.h \
 		../Armazon/filemanager.h \
 		../Armazon/mainwindow.h \
 		../Armazon/order.h \
@@ -321,7 +322,6 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Armazon/request.h \
 		../Armazon/requestqueue.h \
 		../Armazon/structcreator.h \
-		../Armazon/threadfabrica.h \
 		../Armazon/vault.h ../Armazon/armazon.cpp \
 		../Armazon/article.cpp \
 		../Armazon/articlelist.cpp \
@@ -331,6 +331,7 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Armazon/checkout.cpp \
 		../Armazon/client.cpp \
 		../Armazon/clientlist.cpp \
+		../Armazon/factory.cpp \
 		../Armazon/filemanager.cpp \
 		../Armazon/main.cpp \
 		../Armazon/mainwindow.cpp \
@@ -340,7 +341,6 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Armazon/request.cpp \
 		../Armazon/requestqueue.cpp \
 		../Armazon/structcreator.cpp \
-		../Armazon/threadfabrica.cpp \
 		../Armazon/vault.cpp
 QMAKE_TARGET  = Armazon
 DESTDIR       = 
@@ -793,8 +793,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Armazon/armazon.h ../Armazon/article.h ../Armazon/articlelist.h ../Armazon/balancer.h ../Armazon/biller.h ../Armazon/checker.h ../Armazon/checkout.h ../Armazon/client.h ../Armazon/clientlist.h ../Armazon/filemanager.h ../Armazon/mainwindow.h ../Armazon/order.h ../Armazon/orderqueue.h ../Armazon/recrutier.h ../Armazon/request.h ../Armazon/requestqueue.h ../Armazon/structcreator.h ../Armazon/threadfabrica.h ../Armazon/vault.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Armazon/armazon.cpp ../Armazon/article.cpp ../Armazon/articlelist.cpp ../Armazon/balancer.cpp ../Armazon/biller.cpp ../Armazon/checker.cpp ../Armazon/checkout.cpp ../Armazon/client.cpp ../Armazon/clientlist.cpp ../Armazon/filemanager.cpp ../Armazon/main.cpp ../Armazon/mainwindow.cpp ../Armazon/order.cpp ../Armazon/orderqueue.cpp ../Armazon/recrutier.cpp ../Armazon/request.cpp ../Armazon/requestqueue.cpp ../Armazon/structcreator.cpp ../Armazon/threadfabrica.cpp ../Armazon/vault.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Armazon/armazon.h ../Armazon/article.h ../Armazon/articlelist.h ../Armazon/balancer.h ../Armazon/biller.h ../Armazon/checker.h ../Armazon/checkout.h ../Armazon/client.h ../Armazon/clientlist.h ../Armazon/factory.h ../Armazon/filemanager.h ../Armazon/mainwindow.h ../Armazon/order.h ../Armazon/orderqueue.h ../Armazon/recrutier.h ../Armazon/request.h ../Armazon/requestqueue.h ../Armazon/structcreator.h ../Armazon/vault.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Armazon/armazon.cpp ../Armazon/article.cpp ../Armazon/articlelist.cpp ../Armazon/balancer.cpp ../Armazon/biller.cpp ../Armazon/checker.cpp ../Armazon/checkout.cpp ../Armazon/client.cpp ../Armazon/clientlist.cpp ../Armazon/factory.cpp ../Armazon/filemanager.cpp ../Armazon/main.cpp ../Armazon/mainwindow.cpp ../Armazon/order.cpp ../Armazon/orderqueue.cpp ../Armazon/recrutier.cpp ../Armazon/request.cpp ../Armazon/requestqueue.cpp ../Armazon/structcreator.cpp ../Armazon/vault.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Armazon/mainwindow.ui $(DISTDIR)/
 
 
@@ -937,6 +937,9 @@ moc_mainwindow.cpp: ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/rev/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/rev/Documents/GitHub/Armazon/build-Armazon-Desktop_Qt_5_15_0_GCC_64bit-Debug/moc_predefs.h -I/home/rev/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/rev/Documents/GitHub/Armazon/Armazon -I/home/rev/Qt/5.15.0/gcc_64/include -I/home/rev/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/rev/Qt/5.15.0/gcc_64/include/QtGui -I/home/rev/Qt/5.15.0/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Armazon/mainwindow.h -o moc_mainwindow.cpp
@@ -1501,6 +1504,73 @@ clientlist.o: ../Armazon/clientlist.cpp ../Armazon/clientlist.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientlist.o ../Armazon/clientlist.cpp
 
+factory.o: ../Armazon/factory.cpp ../Armazon/factory.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../Armazon/orderqueue.h \
+		../Armazon/order.h \
+		../Armazon/requestqueue.h \
+		../Armazon/request.h \
+		../Armazon/article.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QMutex \
+		../Armazon/articlelist.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o factory.o ../Armazon/factory.cpp
+
 filemanager.o: ../Armazon/filemanager.cpp ../Armazon/filemanager.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
@@ -1684,6 +1754,9 @@ main.o: ../Armazon/main.cpp ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1819,6 +1892,9 @@ mainwindow.o: ../Armazon/mainwindow.cpp ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		ui_mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QVariant \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
@@ -1828,6 +1904,9 @@ mainwindow.o: ../Armazon/mainwindow.cpp ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
@@ -1835,7 +1914,27 @@ mainwindow.o: ../Armazon/mainwindow.cpp ../Armazon/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/QMovie \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qmovie.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qimagereader.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qimageiohandler.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qplugin.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfactoryinterface.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Armazon/mainwindow.cpp
 
@@ -2184,9 +2283,6 @@ structcreator.o: ../Armazon/structcreator.cpp ../Armazon/structcreator.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h \
 		../Armazon/checker.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o structcreator.o ../Armazon/structcreator.cpp
-
-threadfabrica.o: ../Armazon/threadfabrica.cpp ../Armazon/threadfabrica.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o threadfabrica.o ../Armazon/threadfabrica.cpp
 
 vault.o: ../Armazon/vault.cpp ../Armazon/vault.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vault.o ../Armazon/vault.cpp

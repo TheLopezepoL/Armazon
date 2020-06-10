@@ -7,12 +7,15 @@
 struct Armazon{
 
     //Attributes
-    QString pathArmazon;
     SimpleList *clientes;
     ArticleList *articulos;
     OrderQueue *colaPedidos;
 
     //Constructors
+    Armazon(){}
+
+    //Methods
+
 
 };
 

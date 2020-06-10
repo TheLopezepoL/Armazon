@@ -71,3 +71,14 @@ int ArticleList::length(){
     }
     return i;
 }
+
+int ArticleList::timesArticle(QString id){
+    int i =0;
+    NodeArticle *tmp = first;
+    while(tmp != nullptr){
+        if (tmp->compare(id))
+            ++i;
+        tmp = tmp->nxt;
+    }
+    return i;
+}
