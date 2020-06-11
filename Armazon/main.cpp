@@ -5,6 +5,7 @@
 #include "filemanager.h"
 #include "structcreator.h"
 //#include "balancer.h"
+#include "threadloader.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,16 +13,19 @@ int main(int argc, char *argv[])
     //LISTA ARTICULOS
     QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
     qDebug() <<"-------------LISTA ARTICULOS------------- ";
-    ArticleList* articulos_ =  StructCreator::articleListCreator(articulos,"/home/rev/Documents/GitHub/Armazon");
+    ArticleList *articulos_ =  StructCreator::articleListCreator(articulos,"/home/rev/Documents/GitHub/Armazon");
     articulos_->printList();
+
     //LISTA CLIENTES
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
     qDebug() <<"-------------LISTA Clientes-------------";
     SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
     clientes_->printList();
+
     qDebug() <<"-------------COLA PEDIDOS-------------";
-    OrderQueue * cola = StructCreator::orderQueueCreator("/home/rev/Documents/GitHub/Armazon",FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"),clientes_,articulos_);
+    OrderQueue *cola = StructCreator::orderQueueCreator("/home/rev/Documents/GitHub/Armazon",FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"));
     cola->imprimir();
+    qDebug() << cola->returnFront()->data->orderNum;
 /*
     QMutex* mutexPedidos = new QMutex();
     QMutex* mutexFabrica = new QMutex();
@@ -81,6 +85,11 @@ int main(int argc, char *argv[])
     Balancer balancer;
     balancer.__init__(pedidos, fabricar, alisto, a0);
     balancer.start();
+*/
+/*
+    ThreadLoader loader;
+    loader.__init__("/home/rev/Documents/GitHub/Armazon", clientes_,articulos_);
+    loader.start();
 */
     QApplication a(argc, argv);
     MainWindow w;

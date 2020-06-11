@@ -14,6 +14,8 @@ struct StructCreator{
     StructCreator (){
     }
     //Methods
+    //ORDENAMIENTO DE COLA PEDIDO POR PRIORIDAD
+    static OrderQueue *orderQueueArranger(OrderQueue *cola);
     //STRING SEPARATOR
     static Request *requestString(QString expresion);
     static Order *orderString(QString expresion);
@@ -30,7 +32,7 @@ struct StructCreator{
     //CREADOR DE LISTAS
     static ArticleList *articleListCreator(QString _data,QString path);
     static SimpleList *clientListCreator(QString _data);
-    static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos,SimpleList *clientes, ArticleList *articulos);
+    static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos);
 };
 
 #endif // STRUCTCREATOR_H

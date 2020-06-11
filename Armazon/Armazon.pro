@@ -35,6 +35,7 @@ SOURCES += \
     request.cpp \
     requestqueue.cpp \
     structcreator.cpp \
+    threadloader.cpp \
     vault.cpp
 
 HEADERS += \
@@ -56,6 +57,7 @@ HEADERS += \
     request.h \
     requestqueue.h \
     structcreator.h \
+    threadloader.h \
     vault.h
 
 FORMS += \

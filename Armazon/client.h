@@ -21,6 +21,7 @@ struct Client {
        }
        //Methods
        void imprimir();
+       int getPrio();
 };
 
 #endif // CLIENT_H

@@ -72,8 +72,6 @@ ArticleList *StructCreator ::articleListCreator(QString expresion,QString path){
         qDebug() << "FAIL BUILDING AN ARTICLE";
         return nullptr;
     }
-
-    //listaArticulos->printList();
     return listaArticulos;
 }
 
@@ -97,7 +95,7 @@ Article *StructCreator::articleString(QString expresion){
 Client * StructCreator::clientCreator(QString id, QString name, QString priority){
     bool okay;
     int newPrio = priority.toInt(&okay);
-    if (!okay){
+    if (!okay or newPrio>10 or newPrio<0){
         qDebug() << "FAILED CONVERSION";
         return nullptr;
     }
@@ -189,16 +187,23 @@ Request *StructCreator::requestString(QString expresion){
  * S: Una cola de pedidos. Si retorna nulo hay un error en el archivo
  * D: Crea una cola de Pedidos
  */
-OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes, ArticleList *articulos){
+OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos){
     OrderQueue *cola = new OrderQueue();
     for (int i = 0 ; i < pedidos.size(); i++){
         QString pedido = FileManager::readFile(pathArmazon+"/Pedidos/"+pedidos[i]);
-        if (Checker::orderChecker(orderString(pedido),clientes,articulos,pathArmazon+"/Pedidos/"+pedidos[i])){
-            FileManager::fileRelocater(pathArmazon+"/Pedidos",pathArmazon+"/Invalidos",pedidos[i]);
-            continue;
-            }
         cola->append(orderString(pedido));
     }
-    //cola->imprimir();
     return cola;
 }
+
+/*Arranger de Cola
+ * E:
+ * S:
+ * D:
+ */
+/*
+OrderQueue *StructCreator::orderQueueArranger(OrderQueue *cola){
+    NodeOrder *tmp = cola->front;
+
+}
+*/

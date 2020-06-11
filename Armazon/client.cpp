@@ -7,3 +7,7 @@ void Client::imprimir(){
     qDebug() <<"Priority: " << this->priority;
     qDebug() << "";
 }
+
+int Client::getPrio(){
+    return this->priority;
+}
