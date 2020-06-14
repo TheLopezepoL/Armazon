@@ -30,9 +30,8 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *Cliente1;
-    QLabel *label;
+    QLabel *Cliente3;
     QLabel *Cliente2;
-    QFrame *line_3;
     QLabel *f1;
     QLabel *f3;
     QLabel *f2;
@@ -52,8 +51,8 @@ public:
     QFrame *line_14;
     QFrame *line_15;
     QFrame *line_16;
-    QLabel *label_2;
     QFrame *line_17;
+    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -84,24 +83,17 @@ public:
 
         verticalLayout->addWidget(Cliente1);
 
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setPixmap(QPixmap(QString::fromUtf8("../ImagenesGUI/client2.png")));
+        Cliente3 = new QLabel(layoutWidget);
+        Cliente3->setObjectName(QString::fromUtf8("Cliente3"));
+        Cliente3->setPixmap(QPixmap(QString::fromUtf8("../ImagenesGUI/client2.png")));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(Cliente3);
 
         Cliente2 = new QLabel(layoutWidget);
         Cliente2->setObjectName(QString::fromUtf8("Cliente2"));
         Cliente2->setPixmap(QPixmap(QString::fromUtf8("../ImagenesGUI/client1.png")));
 
         verticalLayout->addWidget(Cliente2);
-
-        line_3 = new QFrame(layoutWidget);
-        line_3->setObjectName(QString::fromUtf8("line_3"));
-        line_3->setFrameShape(QFrame::HLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout->addWidget(line_3);
 
         f1 = new QLabel(centralwidget);
         f1->setObjectName(QString::fromUtf8("f1"));
@@ -194,15 +186,15 @@ public:
         line_16->setGeometry(QRect(1670, 540, 20, 161));
         line_16->setFrameShape(QFrame::VLine);
         line_16->setFrameShadow(QFrame::Sunken);
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(1640, 10, 231, 211));
-        label_2->setPixmap(QPixmap(QString::fromUtf8("../ImagenesGUI/checked.png")));
         line_17 = new QFrame(centralwidget);
         line_17->setObjectName(QString::fromUtf8("line_17"));
         line_17->setGeometry(QRect(1670, 200, 20, 71));
         line_17->setFrameShape(QFrame::VLine);
         line_17->setFrameShadow(QFrame::Sunken);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(1640, 50, 91, 91));
+        label->setPixmap(QPixmap(QString::fromUtf8("../ImagenesGUI/checked.png")));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -229,13 +221,13 @@ public:
 #endif // QT_CONFIG(statustip)
         Start->setText(QString());
         Cliente1->setText(QString());
-        label->setText(QString());
+        Cliente3->setText(QString());
         Cliente2->setText(QString());
         f1->setText(QString());
         f3->setText(QString());
         f2->setText(QString());
         f4->setText(QString());
-        label_2->setText(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

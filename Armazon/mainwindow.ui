@@ -69,7 +69,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="Cliente3">
        <property name="text">
         <string/>
        </property>
@@ -85,13 +85,6 @@
        </property>
        <property name="pixmap">
         <pixmap>../ImagenesGUI/client1.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
@@ -356,22 +349,6 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>1640</x>
-      <y>10</y>
-      <width>231</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../ImagenesGUI/checked.png</pixmap>
-    </property>
-   </widget>
    <widget class="Line" name="line_17">
     <property name="geometry">
      <rect>
@@ -383,6 +360,22 @@
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>1640</x>
+      <y>50</y>
+      <width>91</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../ImagenesGUI/checked.png</pixmap>
     </property>
    </widget>
   </widget>

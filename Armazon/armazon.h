@@ -1,10 +1,12 @@
 #ifndef ARMAZON_H
 #define ARMAZON_H
+#include <QString>
+#include <QTimer>
 #include "structcreator.h"
 #include "filemanager.h"
-#include <QString>
-#include "balancer.h"
-#include "factory.h"
+//#include "balancer.h"
+//#include "factory.h"
+//#include "threadloader.h"
 struct Armazon{
 
     //Attributes
@@ -12,16 +14,18 @@ struct Armazon{
     SimpleList *clientes;
     ArticleList *articulos;
     OrderQueue *colaPedidosInicio, colaPedidosPrioridad;
-    Factory *fabricaC,*fabricaB,*fabricaA,*fabricaEs;
-    Balancer *balancer;
     bool runner;
 
 
+
     //Constructors
-    Armazon(){}
+    Armazon(SimpleList *clie_,ArticleList *art_){
+        articulos = art_;
+        clientes = clie_;
+    }
 
     //Methods
-
+    void run();
 
 };
 

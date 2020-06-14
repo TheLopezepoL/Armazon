@@ -18,7 +18,6 @@ ThreadLoader::ThreadLoader(){}
 void ThreadLoader::run(){
     int i = 0;
     while (true) {
-        qDebug() << files;
         QString file = FileManager::readFile(path+"/Pedidos/"+files[i]);
         if (files.length()-1 <= i)
             i=0;

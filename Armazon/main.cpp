@@ -22,11 +22,12 @@ int main(int argc, char *argv[])
     SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
     clientes_->printList();
 
+/*
     qDebug() <<"-------------COLA PEDIDOS-------------";
     OrderQueue *cola = StructCreator::orderQueueCreator("/home/rev/Documents/GitHub/Armazon",FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"));
     cola->imprimir();
     qDebug() << cola->returnFront()->data->orderNum;
-/*
+
     QMutex* mutexPedidos = new QMutex();
     QMutex* mutexFabrica = new QMutex();
     QMutex* mutexAlisto = new QMutex();
@@ -86,11 +87,12 @@ int main(int argc, char *argv[])
     balancer.__init__(pedidos, fabricar, alisto, a0);
     balancer.start();
 */
-/*
+
     ThreadLoader loader;
     loader.__init__("/home/rev/Documents/GitHub/Armazon", clientes_,articulos_);
     loader.start();
-*/
+    OrderQueue *cola = StructCreator::orderQueueCreator("/home/rev/Documents/GitHub/Armazon",FileManager::seeDirectory("/home/rev/Documents/GitHub/Armazon/Pedidos"));
+    //cola->imprimir();
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

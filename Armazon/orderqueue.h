@@ -14,6 +14,7 @@ struct NodeOrder {
     //Methods
     void imprimir();
 
+
 };
 //COLA DE PEDIDOS
 struct OrderQueue {

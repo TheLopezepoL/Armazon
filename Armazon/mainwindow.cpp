@@ -4,6 +4,7 @@
 #include <QMovie>
 #include <QDesktopWidget>
 #include <QtMultimedia/QMediaPlayer>
+#include "armazon.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -57,7 +58,13 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_Start_clicked()
-{
-     qDebug() << "START";
+void MainWindow::on_Start_clicked(){
+    QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
+    SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
+    QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
+    ArticleList *articulos_ =  StructCreator::articleListCreator(articulos,"/home/rev/Documents/GitHub/Armazon");
+    Armazon *armazon = new Armazon(clientes_,articulos_);
+    armazon->run();
+
+
 }
