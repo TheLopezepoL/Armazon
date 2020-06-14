@@ -10,13 +10,15 @@ public:
     OrderQueue* queueA;
     OrderQueue* queueB;
     OrderQueue* queueC;
+    ArticleList* articles;
     bool play;
     bool pause;
 
     Repartidor();
 
-    void __init__(OrderQueue* recibidos, OrderQueue* queueA, OrderQueue* queueB, OrderQueue* queueC);
+    void __init__(OrderQueue* recibidos, OrderQueue* queueA, OrderQueue* queueB, OrderQueue* queueC, ArticleList* articles);
     void run();
+    Category searchCategory(NodeOrder* order);
     void Pause();
     void Unpause();
 
