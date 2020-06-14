@@ -26,9 +26,15 @@ struct StructCreator{
     //Creador de Pedido
     Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
     //CREADOR DE LISTAS
+<<<<<<< Updated upstream
     ArticleList *articleListCreator(QString expresionArticles);
     SimpleList *clientListCreator(QString expresionClients);
     //Orderqueue(?)
+=======
+    static ArticleList *articleListCreator(QString _data,QString path);
+    static SimpleList *clientListCreator(QString _data);
+    static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos, SimpleList *clientes);
+>>>>>>> Stashed changes
 };
 
 #endif // STRUCTCREATOR_H

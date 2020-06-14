@@ -18,7 +18,13 @@ struct OrderQueue {
 
     OrderQueue();
     //METHODS
+<<<<<<< Updated upstream
     void append(Order data);
+=======
+    void append(Order *data, bool side = false);
+    void push(Order *data);
+    bool isEmpty();
+>>>>>>> Stashed changes
     NodeOrder* pop();
 
 };

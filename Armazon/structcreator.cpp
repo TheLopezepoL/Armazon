@@ -126,3 +126,60 @@ Client *StructCreator::clientString(QString expresion){
     Client *nuevo = clientCreator(newExpresion[0],newExpresion[1],newExpresion[2]);
     return nuevo;
 }
+<<<<<<< Updated upstream
+=======
+
+/* Creador Struct Pedido
+ * E: Un string
+ * S: Un pedido
+ * D: Transforma el string en un pedido
+*/
+Order *StructCreator::orderString(QString expresion){
+    bool ok;
+    QStringList newExpresion = expresion.split("*");
+    newExpresion.removeLast();
+    int n1 = newExpresion[0].toInt(&ok);
+    RequestList *listaArtOr = new RequestList();
+    int counter = 0;
+    while (counter < newExpresion.size()) {
+        if (counter != 1 && counter != 0 && counter){
+            listaArtOr->append(requestString(newExpresion[counter]));
+        }
+        ++counter;
+    }
+    Order *order = new Order(n1,newExpresion[1],listaArtOr);
+    return order;
+}
+
+/*Creador Request
+ * E: No tiene
+ * S: Un request
+ * D: Crea un request con la lista dada
+ */
+Request *StructCreator::requestString(QString expresion){
+    bool ok;
+    QStringList newExpresion = expresion.split("; ");
+    //qDebug() << newExpresion;
+    Request *nuevo = new Request(newExpresion[0],newExpresion[1].toInt(&ok));
+    return nuevo;
+}
+
+/*Creador de Cola de Pedidos
+ * E: Una lista con los nombres de los pedidos
+ * S: Una cola de pedidos. Si retorna nulo hay un error en el archivo
+ * D: Crea una cola de Pedidos
+ */
+OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes){
+    OrderQueue *cola = new OrderQueue();
+    for (int i = 0 ; i < pedidos.size(); i++){
+        QString pedido = FileManager::readFile(pathArmazon+"/Pedidos/"+pedidos[i]);
+        if(clientes->searchClient(orderString(pedido)->clientID)->data->priority == 10){
+            cola->append(orderString(pedido),true);
+        }
+        else
+            cola->append(orderString(pedido));
+    }
+    return cola;
+}
+
+>>>>>>> Stashed changes
