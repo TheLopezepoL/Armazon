@@ -32,10 +32,20 @@ MainWindow::MainWindow(QWidget *parent)
     QMovie *almacen = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/almacen.gif");
     QLabel *processAlmacen = new QLabel(this);
     processAlmacen->setMovie(almacen);
-    processAlmacen->setGeometry(850,320,300,300);
+    processAlmacen->setGeometry(950,340,300,300);
     almacen->start();
-    //MUSICA
-
+    //GIF EMPACADOR
+    QMovie *facturador = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/empaque.gif");
+    QLabel *processFact = new QLabel(this);
+    processFact->setMovie(facturador);
+    processFact->setGeometry(1600,250,300,300);
+    facturador->start();
+    //GIF FACTURADOR
+    QMovie *empacador = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/facturador.gif");
+    QLabel *processEm = new QLabel(this);
+    processEm->setMovie(empacador);
+    processEm->setGeometry(1500,650,300,300);
+    empacador->start();
 
 
 
