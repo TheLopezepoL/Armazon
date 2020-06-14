@@ -60,11 +60,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Start_clicked(){
     QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
-    SimpleList *clientes_ = StructCreator::clientListCreator(clientes);
     QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
-    ArticleList *articulos_ =  StructCreator::articleListCreator(articulos,"/home/rev/Documents/GitHub/Armazon");
-    Armazon *armazon = new Armazon(clientes_,articulos_);
-    armazon->run();
+    Armazon *armazon = new Armazon();
+    armazon->start(clientes,articulos,"/home/rev/Documents/GitHub/Armazon");
 
 
 }

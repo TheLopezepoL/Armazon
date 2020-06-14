@@ -32,16 +32,20 @@ NodeOrder* OrderQueue::returnFront(){
  * S: No tiene
  * D: Agrega un pedido a la cola de pedidos
  */
-
 void OrderQueue::append(Order *data, bool side){
     if (isEmpty())
         front = new NodeOrder(data);
     else {
+        if(side)
+            push(data);
+        else{
         NodeOrder *actual = front;
-        while (actual->nxt != nullptr)
+        while (actual->nxt != nullptr){
             actual = actual->nxt;
+        }
         NodeOrder *nuevo = new NodeOrder(data);
         actual->nxt = nuevo;
+        }
     }
 }
 
@@ -75,6 +79,31 @@ NodeOrder* OrderQueue::pop(){
     }
 }
 
+
+/*  PUSH DE PILA
+ * E:
+ * S:
+ * D:
+ */
+void OrderQueue::push(Order *data){
+    // si no hay elementos
+        if (isEmpty()){
+            // ambos apuntan al nuevo en memoria
+            front = new NodeOrder(data);
+        }
+        else
+        {
+            NodeOrder *nuevo = new NodeOrder(data);
+            // a lo que apunta pN ahora es el segundo
+            // por eso, nuevo->siguiente es pN
+            nuevo->nxt = front;
+            // ahora devolvemos pN a que apunte al nuevo
+            // y primero de las lista
+            front = nuevo;
+            // el puntero nuevo deja de existir, no se libera
+            // memoria porque se pierde la info
+        }
+}
 
 int OrderQueue::size(){
     int cont = 0;

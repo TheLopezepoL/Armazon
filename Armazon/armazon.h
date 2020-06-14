@@ -9,23 +9,19 @@
 //#include "threadloader.h"
 struct Armazon{
 
+
     //Attributes
-    QStringList *directorioPedidos;
     SimpleList *clientes;
     ArticleList *articulos;
-    OrderQueue *colaPedidosInicio, colaPedidosPrioridad;
     bool runner;
 
 
 
     //Constructors
-    Armazon(SimpleList *clie_,ArticleList *art_){
-        articulos = art_;
-        clientes = clie_;
-    }
+    Armazon(){}
 
     //Methods
-    void run();
+    void start(QString clients_,QString articles_,QString pathArmazon);
 
 };
 

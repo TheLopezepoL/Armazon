@@ -32,7 +32,7 @@ struct StructCreator{
     //CREADOR DE LISTAS
     static ArticleList *articleListCreator(QString _data,QString path);
     static SimpleList *clientListCreator(QString _data);
-    static OrderQueue *orderQueueCreator(QString pathArmazon, QStringList pedidos);
+    static OrderQueue *orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes);
 };
 
 #endif // STRUCTCREATOR_H

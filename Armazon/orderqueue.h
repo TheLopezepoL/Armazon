@@ -30,6 +30,7 @@ struct OrderQueue {
     };
     //METHODS
     void append(Order *data, bool side = false);
+    void push(Order *data);
     bool isEmpty();
     NodeOrder* pop();
     int size();
