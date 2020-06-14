@@ -33,7 +33,7 @@ NodeOrder* OrderQueue::returnFront(){
  * D: Agrega un pedido a la cola de pedidos
  */
 
-void OrderQueue::append(Order *data){
+void OrderQueue::append(Order *data, bool side){
     if (isEmpty())
         front = new NodeOrder(data);
     else {
@@ -73,4 +73,15 @@ NodeOrder* OrderQueue::pop(){
         borrado->nxt = nullptr;
         return borrado;
     }
+}
+
+
+int OrderQueue::size(){
+    int cont = 0;
+    NodeOrder* ptr = this->front;
+    while(ptr != nullptr){
+        cont++;
+        ptr = ptr->nxt;
+    }
+    return cont;
 }

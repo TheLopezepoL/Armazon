@@ -7,11 +7,21 @@
 
 class Factory : public QThread {
 public:
-    Category category;
-    OrderQueue queues[];
-
+    //Category category;
+    OrderQueue* balancerQueue;
+    bool play;
+    bool pause;
+    ArticleList* articles;
+    OrderQueue* queues[2] = {nullptr, nullptr};
 
     Factory();
+
+    void __init__(/*Category category,*/ OrderQueue* balancerQueue, ArticleList* articles,OrderQueue* first, OrderQueue* second = nullptr);
+    void run();
+    int biggerQueue();
+    void fabricate(NodeOrder* node);
+    void Pause();
+    void Unpause();
 };
 
 #endif // FACTOR_H

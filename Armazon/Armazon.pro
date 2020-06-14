@@ -32,6 +32,7 @@ SOURCES += \
     order.cpp \
     orderqueue.cpp \
     recrutier.cpp \
+    repartidor.cpp \
     request.cpp \
     requestqueue.cpp \
     structcreator.cpp \
@@ -54,6 +55,7 @@ HEADERS += \
     order.h \
     orderqueue.h \
     recrutier.h \
+    repartidor.h \
     request.h \
     requestqueue.h \
     structcreator.h \

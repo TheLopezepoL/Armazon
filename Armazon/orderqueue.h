@@ -28,9 +28,10 @@ struct OrderQueue {
         this->mutex = mutex;
     };
     //METHODS
-    void append(Order *data);
+    void append(Order *data, bool side = false);
     bool isEmpty();
     NodeOrder* pop();
+    int size();
     void imprimir();
     NodeOrder *returnFront();
 
