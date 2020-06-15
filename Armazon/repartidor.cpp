@@ -19,25 +19,27 @@ void Repartidor::run(){
         recibidos->mutex->lock();
         NodeOrder* order = recibidos->pop();
         recibidos->mutex->unlock();
-        Category category = searchCategory(order);
-        switch (category) {
-        case A:
-            queueA->mutex->lock();
-            queueA->append(order->data);
-            queueA->mutex->unlock();
-            break;
-        case B:
-            queueB->mutex->lock();
-            queueB->append(order->data);
-            queueB->mutex->unlock();
-            break;
-        case C:
-            queueC->mutex->lock();
-            queueC->append(order->data);
-            queueC->mutex->unlock();
-            break;
-        default:
-            break;
+        if (order != nullptr) {
+            Category category = searchCategory(order);
+            switch (category) {
+            case A:
+                queueA->mutex->lock();
+                queueA->append(order->data);
+                queueA->mutex->unlock();
+                break;
+            case B:
+                queueB->mutex->lock();
+                queueB->append(order->data);
+                queueB->mutex->unlock();
+                break;
+            case C:
+                queueC->mutex->lock();
+                queueC->append(order->data);
+                queueC->mutex->unlock();
+                break;
+            default:
+                break;
+            }
         }
     }
 }

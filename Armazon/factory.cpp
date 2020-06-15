@@ -20,10 +20,12 @@ void Factory::run(){
         queues[i]->mutex->lock();
         NodeOrder* order = queues[i]->pop();
         queues[i]->mutex->unlock();
-        fabricate(order);
-        balancerQueue->mutex->lock();
-        balancerQueue->append(order->data, true);
-        balancerQueue->mutex->unlock();
+        if (order != nullptr){
+            fabricate(order);
+            balancerQueue->mutex->lock();
+            balancerQueue->append(order->data, true);
+            balancerQueue->mutex->unlock();
+        }
     }
 }
 

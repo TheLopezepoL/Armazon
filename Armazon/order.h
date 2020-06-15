@@ -5,10 +5,14 @@
 struct Order {
     //BOOL PARA DETERMINAR COMPLETADO
     bool done;
+    //BOOL PARA EL BALANCER
+    bool firstTimer;
     //CODIGO DEL PEDIDO
     int orderNum;
     //CODIGO DEL CLIENTE QUE ENVIO EL PEDIDO
     QString clientID;
+    //BITACORA
+    QString binnacle;
     //ARTICULOS
     RequestList* requestQueue;
     //Constructor
@@ -16,6 +20,8 @@ struct Order {
         orderNum = idOrder;
         clientID = idClient;
         requestQueue = _requestQueue;
+        binnacle = "";
+        firstTimer = false;
     }
     //Method
     void isDone();
