@@ -2,7 +2,7 @@
 #include "filemanager.h"
 #include "checker.h"
 #include <QDebug>
-
+#include <QDate>
 //DETERMINA LA CATEGORIA DEL PRODUCTO
 Category StructCreator::determinerC(QString category){
 
@@ -154,6 +154,7 @@ Client *StructCreator::clientString(QString expresion){
 */
 Order *StructCreator::orderString(QString expresion){
     bool ok;
+    QString horaFecha = QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap");
     QStringList newExpresion = expresion.split("*");
     newExpresion.removeLast();
     int n1 = newExpresion[0].toInt(&ok);
@@ -166,6 +167,7 @@ Order *StructCreator::orderString(QString expresion){
         ++counter;
     }
     Order *order = new Order(n1,newExpresion[1],listaArtOr);
+    order->binnacle.append("Pedido: "+ QString::number(order->orderNum)+"\n"+"Cliente: "+order->clientID+"\n"+ "En cola: "+horaFecha+"\n");
     return order;
 }
 
