@@ -3,6 +3,7 @@
 #include <QThread>
 #include "orderqueue.h"
 #include "articlelist.h"
+#include <QDateTime>
 
 //ESTRUCTURA DEL BALANCEADOR
 class Balancer : public QThread {
