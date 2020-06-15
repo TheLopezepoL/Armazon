@@ -91,8 +91,7 @@ void OrderQueue::push(Order *data){
             // ambos apuntan al nuevo en memoria
             front = new NodeOrder(data);
         }
-        else
-        {
+        else{
             NodeOrder *nuevo = new NodeOrder(data);
             // a lo que apunta pN ahora es el segundo
             // por eso, nuevo->siguiente es pN

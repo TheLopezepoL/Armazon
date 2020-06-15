@@ -12,12 +12,12 @@ public:
     QStringList files;
     SimpleList *clients;
     ArticleList *articles;
-
+    OrderQueue *cola;
     bool runner;
 
     ThreadLoader();
 
-    void __init__(QString path_, SimpleList *clientes, ArticleList *articulos);
+    void __init__(QString path_, SimpleList *clientes, ArticleList *articulos,OrderQueue *cola);
     void run();
     void kill();
 
