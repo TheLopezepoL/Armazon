@@ -190,17 +190,12 @@ Request *StructCreator::requestString(QString expresion){
  * D: Crea una cola de Pedidos
  */
 
-OrderQueue *StructCreator::orderQueueCreator(QString pathArmazon,QStringList pedidos,SimpleList *clientes){
-    OrderQueue *cola = new OrderQueue();
-    for (int i = 0 ; i < pedidos.size(); i++){
-        QString pedido = FileManager::readFile(pathArmazon+"/Pedidos/"+pedidos[i]);
-        if(clientes->searchClient(orderString(pedido)->clientID)->data->priority == 10){
-            cola->append(orderString(pedido),true);
-        }
-        else
-            cola->append(orderString(pedido));
-    }
-    return cola;
+void StructCreator::orderQueueCreator(QString pedido,SimpleList *clientes, OrderQueue *cola){
+    if(clientes->searchClient(orderString(pedido)->clientID)->data->priority == 10){
+        cola->append(orderString(pedido),true);
+     }
+     else
+        cola->append(orderString(pedido));
 }
 
 

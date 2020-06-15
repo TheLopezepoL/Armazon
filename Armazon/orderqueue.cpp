@@ -36,8 +36,9 @@ void OrderQueue::append(Order *data, bool side){
     if (isEmpty())
         front = new NodeOrder(data);
     else {
-        if(side)
+        if(side){
             push(data);
+            qDebug () << "lol";}
         else{
         NodeOrder *actual = front;
         while (actual->nxt != nullptr){

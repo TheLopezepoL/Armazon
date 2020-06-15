@@ -21,7 +21,7 @@ void Balancer::Unpause(){
 }
 
 void Balancer::run(){
-    qDebug()<<"alv";
+    //qDebug()<<"alv";
     while (play){
         while (pause)
             sleep(1);
@@ -41,7 +41,9 @@ void Balancer::run(){
                 fabricar->mutex->unlock();
                 qDebug() << "Fabrica: " << order->data->clientID << Qt::endl;
             }
+
         }
+        sleep(1);
     }
 }
 

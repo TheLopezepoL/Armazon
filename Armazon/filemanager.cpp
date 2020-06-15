@@ -80,3 +80,9 @@ void FileManager::fileRelocater(QString path,QString newPath, QString fileName){
         qDebug() << "NO EXISTE EL ARCHIVO";
 
 }
+/*ELIMINA ARCHIVO
+ *
+ *
+ *
+ */
+
