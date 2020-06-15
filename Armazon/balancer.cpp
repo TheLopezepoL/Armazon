@@ -29,6 +29,10 @@ void Balancer::run(){
         NodeOrder* order = pedidos->pop();
         pedidos->mutex->unlock();
         if (order != nullptr){
+            if (order->data->balancerFT){
+                order->data->binnacle.append(QDateTime::currentDateTime().toString());
+                order->data->balancerFT = false;
+            }
             if (reserveMaterial(order->data)){
                 alisto->mutex->lock();
                 alisto->append(order->data);

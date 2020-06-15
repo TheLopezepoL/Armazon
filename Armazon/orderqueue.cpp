@@ -87,21 +87,15 @@ NodeOrder* OrderQueue::pop(){
  */
 void OrderQueue::push(Order *data){
     // si no hay elementos
-        if (isEmpty()){
-            // ambos apuntan al nuevo en memoria
-            front = new NodeOrder(data);
-        }
-        else{
-            NodeOrder *nuevo = new NodeOrder(data);
-            // a lo que apunta pN ahora es el segundo
-            // por eso, nuevo->siguiente es pN
-            nuevo->nxt = front;
-            // ahora devolvemos pN a que apunte al nuevo
-            // y primero de las lista
-            front = nuevo;
-            // el puntero nuevo deja de existir, no se libera
-            // memoria porque se pierde la info
-        }
+    NodeOrder *nuevo = new NodeOrder(data);
+    // a lo que apunta pN ahora es el segundo
+    // por eso, nuevo->siguiente es pN
+    nuevo->nxt = front;
+    // ahora devolvemos pN a que apunte al nuevo
+    // y primero de las listaS
+    front = nuevo;
+    // el puntero nuevo deja de existir, no se libera
+    // memoria porque se pierde la info
 }
 
 int OrderQueue::size(){
