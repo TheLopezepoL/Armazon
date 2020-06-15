@@ -22,7 +22,6 @@ SOURCES += \
     balancer.cpp \
     biller.cpp \
     checker.cpp \
-    checkout.cpp \
     client.cpp \
     clientlist.cpp \
     factory.cpp \
@@ -46,7 +45,6 @@ HEADERS += \
     balancer.h \
     biller.h \
     checker.h \
-    checkout.h \
     client.h \
     clientlist.h \
     factory.h \
