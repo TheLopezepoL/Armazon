@@ -41,6 +41,7 @@ void Repartidor::run(){
                 break;
             }
         }
+        sleep(1);
     }
 }
 

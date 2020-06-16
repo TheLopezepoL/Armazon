@@ -23,6 +23,16 @@ void RequestList::imprimir(){
     }
 }
 
+int RequestList::size(){
+    int cont = 0;
+    NodeRequest* ptr = this->first;
+    while(ptr != nullptr){
+        cont++;
+        ptr = ptr->nxt;
+    }
+    return cont;
+}
+
 /* INSERTAR NODO EN LA LISTA DE ARTICULOS
  * E: Un REQUEST
  * S: No tiene

@@ -35,6 +35,7 @@ struct RequestList {
     void append(Request *data);
     NodeRequest *search(QString id);
     void imprimir();
+    int size();
 
 };
 #endif // REQUESTQUEUE_H

@@ -30,6 +30,7 @@ void Factory::run(){
             balancerQueue->append(order->data, true);
             balancerQueue->mutex->unlock();
         }
+        sleep(1);
     }
 }
 
