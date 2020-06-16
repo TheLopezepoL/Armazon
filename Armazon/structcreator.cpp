@@ -41,35 +41,33 @@ Article * StructCreator::articleCreator(QString idArticle, QString quantity, QSt
  * SI RETORNA NULO ES QUE EL ARCHIVO VIENE CON ERRORES
  */
 
-ArticleList *StructCreator ::articleListCreator(QString expresion,QString path){
-    ArticleList *listaArticulos = new ArticleList();
-    int counter = 0;
-    QString tmp = "";
-    while (counter < expresion.length()) {
-        if (expresion[counter] != "*"){
-            tmp += expresion[counter];
-        }
-        else {
-            if (tmp== ""){
-                break;
-            }else
-                if (articleString(tmp) == nullptr) {
-                qDebug() << tmp;
-                //SI ALGUN ARTUCULO VIENE CON ERRORES
-                FileManager::writeFileA("EL ARHIVO VIENE CON ERRORES. REVISE EL ARTICULO: "+tmp[0]+tmp[1]+tmp[2],path + "/Articulos/Articulos");
-                qDebug() << "FAIL BUILDING AN ARTICLE";
-                return nullptr;
+ArticleList *StructCreator ::articleListCreator(QString expresion,QString path, QMutex *m){
+
+    QStringList idArticulos;
+    ArticleList *listaArticulos = new ArticleList(m);
+    QStringList listaArticulosQString = expresion.split("*");
+    listaArticulosQString.removeLast();
+
+    while (!listaArticulosQString.isEmpty()) {
+         if (listaArticulosQString.length()==0)
+             break;
+
+        QStringList articulo = listaArticulosQString.takeFirst().split("; ");
+
+        if (articleString(articulo) == nullptr){
+            //SI ALGUN ARTUCULO VIENE CON ERRORES
+            FileManager::writeFileA("EL ARHIVO VIENE CON ERRORES. REVISE EL ARTICULO: "+articulo[0],path + "/Articulos/Articulos");
+            qDebug() << "FAIL BUILDING AN ARTICLE";
+            return nullptr;
             }
-            else {
-            listaArticulos->append(articleString(tmp));
-            tmp = "";
+
+        else{
+            listaArticulos->append(articleString(articulo));
+            idArticulos.append(articulo[0]);
             }
         }
-        ++counter;
-    }
-    if (Checker::articlesChecker(listaArticulos)){
+    if (idArticulos.removeDuplicates() !=0){
         FileManager::writeFileA("HAY UN ARTICULO REPETIDO",path + "/Articulos/Articulos");
-        qDebug() << "FAIL BUILDING AN ARTICLE";
         return nullptr;
     }
     return listaArticulos;
@@ -80,10 +78,9 @@ ArticleList *StructCreator ::articleListCreator(QString expresion,QString path){
  * S: Un articulo
  * D: Retorna un articulo con las partes del string
  */
-Article *StructCreator::articleString(QString expresion){
-    QStringList newExpresion = expresion.split("; ");
-    //qDebug() << newExpresion;
-    Article *nuevo = articleCreator(newExpresion[0],newExpresion[1],newExpresion[2],newExpresion[3],newExpresion[4]);
+Article *StructCreator::articleString(QStringList expresion){
+    //qDebug() << expresion;
+    Article *nuevo = articleCreator(expresion[0],expresion[1],expresion[2],expresion[3],expresion[4]);
     return nuevo;
 }
 
@@ -109,8 +106,8 @@ Client * StructCreator::clientCreator(QString id, QString name, QString priority
  * D: Lee la expresion creada con la lista de clientes, separa el string creando articulos y crea una lista articulos
  */
 
-SimpleList *StructCreator ::clientListCreator(QString expresionClients){
-    SimpleList *listaClientes = new SimpleList();
+SimpleList *StructCreator ::clientListCreator(QString expresionClients, QMutex *mC){
+    SimpleList *listaClientes = new SimpleList(mC);
     int counter = 0;
     QString tmp = "";
     while (counter < expresionClients.length()) {

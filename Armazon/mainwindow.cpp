@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    x = true;
     ui->setupUi(this);
+
     //BACKGROUND----------------------------------------------------------------
     resize(QDesktopWidget().availableGeometry(this).size() * 0.90);
     QPixmap bgnd("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/bk.png");
@@ -59,10 +61,17 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::on_Start_clicked(){
-    QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
-    QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
-    Armazon *armazon = new Armazon();
-    armazon->preStart(clientes,articulos,"/home/rev/Documents/GitHub/Armazon");
-    armazon->start();
+
+    if (x) {
+        //STRINGS DE CLIENTES/ARTICULOS
+        QString clientes = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Clientes/Clientes");
+        QString articulos = FileManager::readFile("/home/rev/Documents/GitHub/Armazon/Articulos/Articulos");
+        //ARMAZON STRUCT
+        Armazon *armazon = new Armazon();
+        armazon->preStart(clientes,articulos,"/home/rev/Documents/GitHub/Armazon");
+        armazon->run();
+        x = false;
+    }
+
 
 }

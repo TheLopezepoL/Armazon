@@ -26,20 +26,23 @@ struct NodeArticle {
 
 struct ArticleList {
     //Attributes
-    NodeArticle* first;
+    NodeArticle* first,*last;
     QMutex* mutex;
 
     //Constructor
-    ArticleList(){}
+    ArticleList(){
+        first = last = nullptr;
+    }
 
     ArticleList(QMutex* mutex){
-        first = nullptr;
+        first = last = nullptr;
         this->mutex = mutex;
     };
 
     //Methods
+    bool isEmpty();
     void append(Article* data);
-    void pop(QString idArticle);
+    void popLast();
     NodeArticle* searchArticle(QString id);
     int timesArticle(QString id);
     void printList();

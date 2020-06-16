@@ -1,6 +1,14 @@
 #include "articlelist.h"
 
 #include <QDebug>
+bool ArticleList::isEmpty(){
+    if (first == nullptr)
+        return true;
+    else
+        return false;
+}
+
+
 
 /*
  * INSERTAR AL INICIO UN NODO ARTCULO EN LA LISTA DE ARTICULOS
@@ -10,8 +18,8 @@
  */
 void ArticleList::append(Article *article){
 
-    if(first == nullptr)
-        first = new NodeArticle(article);
+    if(isEmpty())
+        first = last =  new NodeArticle(article);
     else{
         NodeArticle *nuevo = new NodeArticle(article);
         first->prv = nuevo;
@@ -31,7 +39,6 @@ void ArticleList::append(Article *article){
 NodeArticle * ArticleList::searchArticle(QString idArticulo){
     NodeArticle *tmp = first;
     while(tmp != nullptr){
-        //tmp->data->imprimir();
          if (tmp->compare(idArticulo))
             return tmp;
         tmp = tmp->nxt;
@@ -76,9 +83,26 @@ int ArticleList::timesArticle(QString id){
     int i =0;
     NodeArticle *tmp = first;
     while(tmp != nullptr){
-        if (tmp->compare(id))
+        if (tmp->data->id == id)
             ++i;
         tmp = tmp->nxt;
     }
     return i;
 }
+
+
+void ArticleList::popLast(){
+    if (first->nxt == nullptr){
+        first = last = nullptr;
+    }
+    else {
+        NodeArticle *actual = first;
+
+        while (actual->nxt->nxt != nullptr) {
+            actual = actual->nxt;
+        }
+        last = actual;
+        actual->nxt = nullptr;
+    }
+}
+

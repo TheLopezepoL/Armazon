@@ -24,7 +24,7 @@ struct Article {
     QString position;
     //TIPO DE ARTICULO
     Category category;
-
+    Article(){}
     Article(QString id_,int stock_,int time_,QString position_,Category category_){
         id = id_;
         stock = stock_;

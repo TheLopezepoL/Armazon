@@ -2,8 +2,8 @@
 
 Factory::Factory(){}
 
-void Factory::__init__(/*Category category,*/ OrderQueue *balancerQueue, ArticleList* articles,OrderQueue* first, OrderQueue* second){
-    //this->category = category;
+void Factory::__init__(Category category,OrderQueue *balancerQueue, ArticleList* articles,OrderQueue* first, OrderQueue* second){
+    this->category = category;
     this->balancerQueue = balancerQueue;
     this->articles = articles;
     this->queues[0] = first;

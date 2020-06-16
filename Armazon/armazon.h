@@ -12,17 +12,41 @@ struct Armazon{
 
 
     //Attributes
+
     //NORMAL INFO
     QString path;
-    OrderQueue *firstCola;
-    ThreadLoader *loader;
     SimpleList *clientes;
     ArticleList *articulos;
+    //LOADER
+    ThreadLoader *loader;
+    //BALANCER
     Balancer *balancer;
-    Factory *factoryA,*factoryB,*factoryC,*factoryEs;
     bool runner;
     //MUTEX
-    QMutex *mutex;
+    QMutex *mC;
+    QMutex *m;
+    QMutex *m0;
+    QMutex *m1;
+    QMutex *m2;
+    QMutex *m3;
+    QMutex *m4;
+    QMutex *m5;
+    //COLAS
+    OrderQueue *cola;
+    OrderQueue *alisto;
+    OrderQueue *fabricados;
+    //THREAD REPARTIDOR
+    Repartidor *repartidor;
+    //COLA DE THREAD REPARTIDOR
+    OrderQueue *queueA;
+    OrderQueue *queueB;
+    OrderQueue *queueC;
+    //FABRICAS
+    Factory *factoryA;
+    Factory *factoryB;
+    Factory *factoryC;
+    Factory *factoryE;
+
 
 
     //Constructors
@@ -30,7 +54,7 @@ struct Armazon{
 
     //Methods
     void preStart(QString clients_,QString articles_,QString pathArmazon);
-    void start();
+    void run();
 
 };
 

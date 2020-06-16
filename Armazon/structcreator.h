@@ -20,7 +20,7 @@ struct StructCreator{
     static Request *requestString(QString expresion);
     static Order *orderString(QString expresion);
     static Client *clientString(QString expresion);
-    static Article *articleString(QString expresion);
+    static Article *articleString(QStringList expresion);
     //CATEGORY DETERMINER
     static Category determinerC(QString category);
     //STRUCTS BASICOS
@@ -30,8 +30,8 @@ struct StructCreator{
     //Creador de Pedido
     static Order *orderCreator(QString idClient, QString idOrder, ArticleList articleListOrder);
     //CREADOR DE LISTAS
-    static ArticleList *articleListCreator(QString _data,QString path);
-    static SimpleList *clientListCreator(QString _data);
+    static ArticleList *articleListCreator(QString _data,QString path, QMutex *m);
+    static SimpleList *clientListCreator(QString _data,QMutex *mC);
     static void orderQueueCreator(QString pedido,SimpleList *clientes, OrderQueue *cola);
 };
 

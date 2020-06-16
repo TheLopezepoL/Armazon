@@ -47,7 +47,6 @@ bool Checker::orderChecker(Order *order, SimpleList *clientes,ArticleList *artic
  */
 bool Checker::articlesChecker(ArticleList *articulos){
     NodeArticle *tmp = articulos->first;
-
     while (tmp != nullptr) {
         if (articulos->timesArticle(tmp->data->id) > 1)
             return true;
