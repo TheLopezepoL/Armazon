@@ -3,7 +3,7 @@
 #include <QThread>
 #include "orderqueue.h"
 #include "articlelist.h"
-
+#include <QDateTime>
 
 class Factory : public QThread {
 public:
@@ -22,6 +22,8 @@ public:
     void fabricate(NodeOrder* node);
     void Pause();
     void Unpause();
+
+    QString categoryName();
 };
 
 #endif // FACTOR_H

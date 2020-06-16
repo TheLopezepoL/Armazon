@@ -21,6 +21,10 @@ void Factory::run(){
         NodeOrder* order = queues[i]->pop();
         queues[i]->mutex->unlock();
         if (order != nullptr){
+            if (order->data->factoryFT){
+                 order->data->orderReport.append("Fabrica:\n");
+                 order->data->factoryFT = false;
+             }
             fabricate(order);
             balancerQueue->mutex->lock();
             balancerQueue->append(order->data, true);
@@ -58,6 +62,32 @@ void Factory::fabricate(NodeOrder *node){
     }
     if (request == nullptr)
         return;
+    node->data->orderReport.append("Articulo\t" + request->data->article + "\tFabricado en " + categoryName() + "\n");
+    node->data->orderReport.append(QString::number(quant) + "unidades\n");
+    node->data->orderReport.append("Inicio:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
     sleep(time);
     request->data->created = quant;
+    node->data->binnacle.append("A Fabrica:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\tFaltaban " + QString::number(quant) + "unidad(es) de " + request->data->article);
+        node->data->orderReport.append("Final:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
+    }
+
+    QString Factory::categoryName(){
+        switch (this->category) {
+        case A:
+            return "A";
+        case B:
+            return "B";
+        case C:
+            return "C";
+        default:
+            return "Comodin";
+        }
+    }
+
+    void Factory::Pause(){
+        this->pause = true;
+    }
+
+    void Factory::Unpause(){
+        this->pause = false;
 }

@@ -164,7 +164,7 @@ Order *StructCreator::orderString(QString expresion){
         ++counter;
     }
     Order *order = new Order(n1,newExpresion[1],listaArtOr);
-    order->binnacle.append("Pedido: "+ QString::number(order->orderNum)+"\n"+"Cliente: "+order->clientID+"\n"+ "En cola: "+horaFecha+"\n");
+    order->binnacle.append("Pedido:\t"+ QString::number(order->orderNum)+"\n"+"Cliente:\t"+order->clientID+"\n"+ "En cola:\t"+horaFecha+"\n");
     return order;
 }
 
