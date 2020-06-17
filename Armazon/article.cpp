@@ -15,3 +15,14 @@ void Article::imprimir(){
     qDebug() << "Time: " << this->time;
     qDebug()<<"";
 }
+
+int Article::getTimeVault(){
+    QCharRef letter = this->position[0];
+    int time = letter.toLatin1() - 65;
+    letter = this->position[1];
+    if (letter == '1')
+        time += 10;
+    else
+        time += this->position[2].digitValue();
+    return time;
+}

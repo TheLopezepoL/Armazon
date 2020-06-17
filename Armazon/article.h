@@ -34,6 +34,8 @@ struct Article {
     }
     //IMPRIMIR
      void imprimir();
+     int getTimeVault();
+     //int getTimeVaultAUX(QCharRef letter);
 };
 
 #endif // ARTICLE_H

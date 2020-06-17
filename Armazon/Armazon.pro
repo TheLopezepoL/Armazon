@@ -35,8 +35,7 @@ SOURCES += \
     request.cpp \
     requestqueue.cpp \
     structcreator.cpp \
-    threadloader.cpp \
-    vault.cpp
+    threadloader.cpp
 
 HEADERS += \
     armazon.h \
@@ -57,8 +56,7 @@ HEADERS += \
     request.h \
     requestqueue.h \
     structcreator.h \
-    threadloader.h \
-    vault.h
+    threadloader.h
 
 FORMS += \
     mainwindow.ui
