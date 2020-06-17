@@ -1,5 +1,5 @@
 #include "factory.h"
-
+#include <QDebug>
 Factory::Factory(){}
 
 void Factory::__init__(Category category,OrderQueue *balancerQueue, ArticleList* articles,OrderQueue* first, OrderQueue* second){
@@ -27,6 +27,7 @@ void Factory::run(){
              }
             fabricate(order);
             balancerQueue->mutex->lock();
+            message.append( "Pedido " + QString::number(order->data->orderNum) +" del cliente "+order->data->clientID +" agregado otra vez a la cola!"+"\n");
             balancerQueue->append(order->data, true);
             balancerQueue->mutex->unlock();
         }
@@ -69,7 +70,8 @@ void Factory::fabricate(NodeOrder *node){
     sleep(time);
     request->data->created = quant;
     node->data->binnacle.append("A Fabrica:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\tFaltaban " + QString::number(quant) + "unidad(es) de " + request->data->article);
-        node->data->orderReport.append("Final:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
+    node->data->orderReport.append("Final:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
+    message.append( "Se ha fabricado el articulo "+ request->data->article + " del pedido " + QString::number(node->data->orderNum)+"\n");
     }
 
     QString Factory::categoryName(){

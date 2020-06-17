@@ -13,6 +13,7 @@ public:
     bool pause;
     ArticleList* articles;
     OrderQueue* queues[2] = {nullptr, nullptr};
+    QString message;
 
     Factory();
 

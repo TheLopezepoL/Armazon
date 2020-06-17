@@ -12,13 +12,16 @@ public:
     SimpleList *clients;
     ArticleList *articles;
     OrderQueue *cola;
+    QString message;
     bool runner;
+    bool pause;
 
     ThreadLoader();
 
     void __init__(QString path_, SimpleList *clientes, ArticleList *articulos,OrderQueue *cola);
     void run();
-    void kill();
+    void pauser();
+    void unpause();
 
 };
 
