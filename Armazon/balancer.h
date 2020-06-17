@@ -13,6 +13,8 @@ public:
     OrderQueue* fabricar;
     OrderQueue* alisto;
     ArticleList* articulos;
+    QString message;
+
 
     bool play;
     bool pause;
@@ -24,6 +26,7 @@ public:
     void Pause();
     void Unpause();
     bool reserveMaterial(Order* order);
+
 
 
 };

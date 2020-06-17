@@ -32,7 +32,7 @@ struct Armazon{
     QMutex *m4;
     QMutex *m5;
     //COLAS
-    OrderQueue *cola;
+    OrderQueue *firstCola;
     OrderQueue *alisto;
     OrderQueue *fabricados;
     //THREAD REPARTIDOR
@@ -48,13 +48,13 @@ struct Armazon{
     Factory *factoryE;
 
 
-
     //Constructors
     Armazon(){}
 
     //Methods
     void preStart(QString clients_,QString articles_,QString pathArmazon);
     void run();
+    void pauseEverything();
 
 };
 
