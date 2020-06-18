@@ -8,11 +8,13 @@
 
 //ALISTADOR QUE RECORRE EL ALAMACEN RECOGIENDO LOS ARTICULOS SOLICITADOS POR EL PEDIDO
 class Recrutier : public QThread{   // Guardar en un array en Armazon
+public:
     bool play;
     bool pause;
     OrderQueue* arriving;
     OrderQueue* outgoing;
     ArticleList* articles;
+    QString message;
     int id;
     bool active;
 

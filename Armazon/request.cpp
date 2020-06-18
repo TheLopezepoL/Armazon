@@ -4,6 +4,7 @@ void Request::imprimir(){
     qDebug() << "ID de Articulo: " << this->article;
     qDebug() << "Total de Articulos Requeridos: "<< this->total;
     qDebug() << "Total Reservados: " << this->reserved;
+    qDebug() << "Total Fabricados: " << this->created;
     qDebug() << "";
 }
 

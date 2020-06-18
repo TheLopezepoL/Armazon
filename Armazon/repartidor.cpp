@@ -50,7 +50,7 @@ Category Repartidor::searchCategory(NodeOrder *order){
     NodeRequest* request = order->data->requestQueue->first;
     Category category = Special;
     while (request != nullptr){
-        if (request->data->total > request->data->reserved){
+        if (request->data->total != (request->data->reserved + request->data->created)){
             articles->mutex->lock();
             category = articles->searchArticle(request->data->article)->data->category;
             articles->mutex->unlock();

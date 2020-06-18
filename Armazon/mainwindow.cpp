@@ -23,6 +23,24 @@ MainWindow::MainWindow(QWidget *parent)
     QPalette palette;
     palette.setBrush(QPalette::Background,bgnd);
     this->setPalette(palette);
+    //GIF TITLE------------------------------------------------------------------------------
+    QMovie *title = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/title.gif");
+    QLabel *titleProcess = new QLabel(this);
+    titleProcess->setMovie(title);
+    titleProcess->setGeometry(1200,70,300,70);
+    //GIF threaddisplay------------------------------------------------------------------------------
+    QMovie *threaddisplay = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/threaddisplay.gif");
+    QLabel *displayer = new QLabel(this);
+    displayer->setMovie(threaddisplay);
+    displayer->setGeometry(650,500,300,70);
+    threaddisplay->start();
+    title->start();
+    //GIF SPACESHIP------------------------------------------------------------------------------
+    QMovie *ship = new QMovie("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/astro.gif");
+    QLabel *shipProcess = new QLabel(this);
+    shipProcess->setMovie(ship);
+    shipProcess->setGeometry(1150,130,300,70);
+    ship->start();
     //BOTON START----------------------------------------------------------------
     QPixmap button1("/home/rev/Documents/GitHub/Armazon/ImagenesGUI/start.png");
     QIcon start(button1);
@@ -103,6 +121,7 @@ MainWindow::MainWindow(QWidget *parent)
     processEm->setMovie(empacador);
     processEm->setGeometry(1500,650,300,300);
     empacador->start();
+    //1700,900,300,150
     //TEXT BOX------------------------------------------------------------------------------
     ui->TextBox->setReadOnly(true);
     //EYE LOADER
@@ -118,9 +137,24 @@ MainWindow::MainWindow(QWidget *parent)
     ui->EyeBalancer->setCheckable(true);
     //EYE RECRUITER
     QIcon recruiterEYE(eye);
-    ui->EyeRecruiter->setIcon(recruiterEYE);
-    ui->EyeRecruiter->setIconSize(eye.size());
-    ui->EyeRecruiter->setCheckable(true);
+    ui->EyeRecruiter1->setIcon(recruiterEYE);
+    ui->EyeRecruiter1->setIconSize(eye.size());
+    ui->EyeRecruiter1->setCheckable(true);
+    ui->EyeRecruiter_2->setIcon(recruiterEYE);
+    ui->EyeRecruiter_2->setIconSize(eye.size());
+    ui->EyeRecruiter_2->setCheckable(true);
+    ui->EyeRecruiter_3->setIcon(recruiterEYE);
+    ui->EyeRecruiter_3->setIconSize(eye.size());
+    ui->EyeRecruiter_3->setCheckable(true);
+    ui->EyeRecruiter_4->setIcon(recruiterEYE);
+    ui->EyeRecruiter_4->setIconSize(eye.size());
+    ui->EyeRecruiter_4->setCheckable(true);
+    ui->EyeRecruiter_5->setIcon(recruiterEYE);
+    ui->EyeRecruiter_5->setIconSize(eye.size());
+    ui->EyeRecruiter_5->setCheckable(true);
+    ui->EyeRecruiter_6->setIcon(recruiterEYE);
+    ui->EyeRecruiter_6->setIconSize(eye.size());
+    ui->EyeRecruiter_6->setCheckable(true);
     //EYE BILLER
     QIcon billerEYE(eye);
     ui->EyeBiller->setIcon(billerEYE);
@@ -193,8 +227,13 @@ void MainWindow::on_Stop_clicked(bool checked)
             this->armazon->factoryB->Pause();
             this->armazon->factoryC->Pause();
             this->armazon->factoryE->Pause();
-            //this->armazon->biller->Pause();
-            //this->armazon->recruiter->Pause();
+            this->armazon->biller->Pause();
+            this->armazon->recrutier1->Pause();
+            this->armazon->recrutier2->Pause();
+            this->armazon->recrutier3->Pause();
+            this->armazon->recrutier4->Pause();
+            this->armazon->recrutier5->Pause();
+            this->armazon->recrutier6->Pause();
         }
         else{
             this->armazon->loader->unpause();
@@ -203,8 +242,13 @@ void MainWindow::on_Stop_clicked(bool checked)
             this->armazon->factoryB->Unpause();
             this->armazon->factoryC->Unpause();
             this->armazon->factoryE->Unpause();
-            //this->armazon->biller->Unpause();
-            //this->armazon->recruiter->Unpause();
+            this->armazon->biller->Unpause();
+            this->armazon->recrutier1->Unpause();
+            this->armazon->recrutier2->Unpause();
+            this->armazon->recrutier3->Unpause();
+            this->armazon->recrutier4->Unpause();
+            this->armazon->recrutier5->Unpause();
+            this->armazon->recrutier6->Unpause();
 
         }
     }
@@ -300,9 +344,21 @@ void MainWindow::on_ButtonRecruiter_clicked(bool checked)
 {
     if(!x){
         if (checked){
+            this->armazon->recrutier1->Pause();
+            this->armazon->recrutier2->Pause();
+            this->armazon->recrutier3->Pause();
+            this->armazon->recrutier4->Pause();
+            this->armazon->recrutier5->Pause();
+            this->armazon->recrutier6->Pause();
             qDebug() << "RECRUITER PAUSED";
         }
         else {
+            this->armazon->recrutier1->Unpause();
+            this->armazon->recrutier2->Unpause();
+            this->armazon->recrutier3->Unpause();
+            this->armazon->recrutier4->Unpause();
+            this->armazon->recrutier5->Unpause();
+            this->armazon->recrutier6->Unpause();
             qDebug() << "RECRUITER UNPAUSED";
         }
     }
@@ -313,10 +369,10 @@ void MainWindow::on_ButtonBiller_clicked(bool checked)
 {
     if(!x){
         if (checked){
-            qDebug() << "BILLER PAUSED";
+            this->armazon->biller->Pause();
         }
         else {
-            qDebug() << "BILLER UNPAUSED";
+            this->armazon->biller->Unpause();
         }
     }
 }
@@ -392,6 +448,93 @@ void MainWindow::on_EyeFactoryAB_clicked(bool checked)
     if(!x){
         if (checked){
             ui->TextBox->setText(armazon->factoryE->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+
+//EYE BILLER
+void MainWindow::on_EyeBiller_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->biller->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+// EYE RECRUITERS
+void MainWindow::on_EyeRecruiter_6_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier6->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+void MainWindow::on_EyeRecruiter_5_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier5->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+void MainWindow::on_EyeRecruiter_4_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier4->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+void MainWindow::on_EyeRecruiter_3_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier3->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+void MainWindow::on_EyeRecruiter_2_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier2->message);
+        }
+        else {
+            ui->TextBox->clear();
+        }
+    }
+}
+
+void MainWindow::on_EyeRecruiter1_clicked(bool checked)
+{
+    if(!x){
+        if (checked){
+            ui->TextBox->setText(armazon->recrutier1->message);
         }
         else {
             ui->TextBox->clear();

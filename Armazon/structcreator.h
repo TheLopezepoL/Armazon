@@ -33,6 +33,8 @@ struct StructCreator{
     static ArticleList *articleListCreator(QString _data,QString path, QMutex *m);
     static SimpleList *clientListCreator(QString _data,QMutex *mC);
     static void orderQueueCreator(QString pedido,SimpleList *clientes, OrderQueue *cola);
+    //CREADOR TXT DE ARTICULOS
+    static void txtArticle(ArticleList *articulos);
 };
 
 #endif // STRUCTCREATOR_H

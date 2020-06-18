@@ -9,6 +9,7 @@ class ThreadLoader : public QThread {
 
 public:
     QString path;
+    QStringList pedidosProcesados;
     SimpleList *clients;
     ArticleList *articles;
     OrderQueue *cola;

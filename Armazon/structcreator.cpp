@@ -196,4 +196,14 @@ void StructCreator::orderQueueCreator(QString pedido,SimpleList *clientes, Order
 }
 
 
+//TEXT ARTICLE LIST
+void StructCreator::txtArticle(ArticleList *articulos){
+    NodeArticle *tmp= articulos->first;
+    QString lista;
+    while (tmp != nullptr) {
+        lista.append(tmp->data->id+"\t"+tmp->data->stock+"\t"+QString::number(tmp->data->time)+"\t"+tmp->data->category+"\t"+tmp->data->position+"\n");
+        tmp = tmp->nxt;
+    }
+    FileManager::writeFileN(lista,"/home/rev/Documents/GitHub/Armazon/Articulos");
+}
 

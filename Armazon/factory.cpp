@@ -26,6 +26,7 @@ void Factory::run(){
                  order->data->factoryFT = false;
              }
             fabricate(order);
+            order->data->imprimir();
             balancerQueue->mutex->lock();
             message.append( "Pedido " + QString::number(order->data->orderNum) +" del cliente "+order->data->clientID +" agregado otra vez a la cola!"+"\n");
             balancerQueue->append(order->data, true);
@@ -53,7 +54,7 @@ void Factory::fabricate(NodeOrder *node){
     int quant = 0;
     int time = 0;
     while (request != nullptr){
-        quant = request->data->total - request->data->reserved;
+        quant = request->data->total - (request->data->reserved+request->data->created);
         if (quant != 0){
             articles->mutex->lock();
             time = articles->searchArticle(request->data->article)->data->time * quant;
@@ -65,13 +66,15 @@ void Factory::fabricate(NodeOrder *node){
     if (request == nullptr)
         return;
     node->data->orderReport.append("Articulo\t" + request->data->article + "\tFabricado en " + categoryName() + "\n");
-    node->data->orderReport.append(QString::number(quant) + "unidades\n");
+    node->data->orderReport.append(QString::number(quant) + " unidades\n");
     node->data->orderReport.append("Inicio:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
     sleep(time);
     request->data->created = quant;
-    node->data->binnacle.append("A Fabrica:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\tFaltaban " + QString::number(quant) + "unidad(es) de " + request->data->article);
+    request->imprimir();
+    node->data->binnacle.append("A Fabrica:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\tFaltaban " + QString::number(quant) + " unidad(es) de " + request->data->article + "\n");
     node->data->orderReport.append("Final:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
     message.append( "Se ha fabricado el articulo "+ request->data->article + " del pedido " + QString::number(node->data->orderNum)+"\n");
+
     }
 
     QString Factory::categoryName(){

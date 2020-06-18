@@ -45,6 +45,7 @@ void FileManager::writeFileN(QString string, QString path){
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
         QTextStream stream(&file);
         stream << string << Qt::endl;
+
     } else
         qDebug() << "ERROR - WRITE FILE ("+path+")";
     file.close();

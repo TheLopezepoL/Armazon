@@ -4,6 +4,7 @@
 void Balancer::__init__(OrderQueue* pedidos, OrderQueue* fabricados, OrderQueue* alisto, ArticleList* articulos){
     pause = false;
     play = true;
+    message = "";
     this->pedidos = pedidos;
     this->fabricar = fabricados;
     this->alisto = alisto;
@@ -29,22 +30,20 @@ void Balancer::run(){
         NodeOrder* order = pedidos->pop();
         pedidos->mutex->unlock();
         if (order != nullptr){
-            if (order->data->balancerFT){
-                order->data->binnacle.append(QDateTime::currentDateTime().toString());
-                order->data->balancerFT = false;
-            }
+            if (order->data->balancerFT)
+                order->data->binnacle.append("A Balanceador:\t" + QDateTime::currentDateTime().toString("yyyy-MM-d h:m:s ap") + "\n");
             if (reserveMaterial(order->data)){
                 alisto->mutex->lock();
                 alisto->append(order->data);
-                message.append("Se esta alistando el pedido ID: " + QString::number(order->data->orderNum) +" del cliente " +order->data->clientID+"\n");
                 alisto->mutex->unlock();
+                message.append("Se esta alistando el pedido ID: " + QString::number(order->data->orderNum) +" del cliente " +order->data->clientID+"\n");
                 qDebug() << "Alisto el pedido: " << order->data->orderNum << Qt::endl;
             }
             else {
                 fabricar->mutex->lock();
                 fabricar->append(order->data);
-                 message.append("Se ha enviado a fabricas el pedido ID: " + QString::number(order->data->orderNum) +" del cliente " +order->data->clientID+"\n");
                 fabricar->mutex->unlock();
+                message.append("Se ha enviado a fabricas el pedido ID: " + QString::number(order->data->orderNum) +" del cliente " +order->data->clientID+"\n");
                 qDebug() << "Fabrica el pedido: " << order->data->orderNum << Qt::endl;
             }
 
@@ -55,7 +54,7 @@ void Balancer::run(){
 
 bool Balancer::reserveMaterial(Order *order){
     order->isDone();
-    if (!order->done){
+    if (order->balancerFT && !order->done){
         NodeRequest* request = order->requestQueue->first;
         while (request != nullptr){
             NodeArticle* article = this->articulos->searchArticle(request->data->article);
@@ -71,6 +70,7 @@ bool Balancer::reserveMaterial(Order *order){
             request = request->nxt;
         }
         order->isDone();
+        order->balancerFT = false;
     }
     return order->done;
 }

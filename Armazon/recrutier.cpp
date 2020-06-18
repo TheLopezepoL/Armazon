@@ -25,6 +25,7 @@ void Recrutier::run(){
         if (order != nullptr){
             active = false;
             NodeRequest* request = order->data->requestQueue->first;
+            message.append("El alistador #"+QString::number(this->id) +" esta alistando el pedido "+ QString::number(order->data->orderNum) +" del cliente " +order->data->clientID+"\n");
             order->data->orderReport.append("Alisto:\tAlistador #" + QString::number(this->id) + "\n");
             while (request != nullptr){
                 if (request->data->reserved > 0)
@@ -53,4 +54,11 @@ int Recrutier::calculateTime(NodeOrder* order, Request *request){
     }
     articles->mutex->unlock();
     return time;
+}
+
+void Recrutier::Pause(){
+    this->pause = true;
+}
+void Recrutier::Unpause(){
+    this->pause = false;
 }

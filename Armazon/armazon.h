@@ -7,7 +7,8 @@
 #include "factory.h"
 #include "threadloader.h"
 #include "repartidor.h"
-
+#include "biller.h"
+#include "recrutier.h"
 struct Armazon{
 
 
@@ -31,6 +32,7 @@ struct Armazon{
     QMutex *m3;
     QMutex *m4;
     QMutex *m5;
+    QMutex *m6;
     //COLAS
     OrderQueue *firstCola;
     OrderQueue *alisto;
@@ -46,6 +48,18 @@ struct Armazon{
     Factory *factoryB;
     Factory *factoryC;
     Factory *factoryE;
+    //BILLER
+    Biller  *biller;
+    //COLA BILLER
+    OrderQueue *outgoing;
+    //RECRUITERS
+    Recrutier *recrutier1;
+    Recrutier *recrutier2;
+    Recrutier *recrutier3;
+    Recrutier *recrutier4;
+    Recrutier *recrutier5;
+    Recrutier *recrutier6;
+
 
 
     //Constructors

@@ -54,3 +54,4 @@ bool Checker::articlesChecker(ArticleList *articulos){
     }
     return false;
 }
+

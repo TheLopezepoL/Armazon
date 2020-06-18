@@ -15,6 +15,7 @@ void Armazon::preStart(QString clients_, QString articles_, QString pathArmazon)
     this->m3 = new QMutex();
     this->m4 = new QMutex();
     this->m5 = new QMutex();
+    this->m6 = new QMutex();
     //ESTRUCTURAS
     this->path = pathArmazon;
     this->clientes = StructCreator::clientListCreator(clients_,mC);
@@ -44,6 +45,17 @@ void Armazon::preStart(QString clients_, QString articles_, QString pathArmazon)
     this->factoryE = new Factory();
     //qDebug() << "Fabricas Listas";
     //qDebug() <<"";
+    //BILLER
+    this->biller = new Biller();
+    //COLAR BILLER
+    this->outgoing = new OrderQueue(m6);
+    //RECRUITERS
+    this->recrutier1 = new Recrutier();
+    this->recrutier2 = new Recrutier();
+    this->recrutier3 = new Recrutier();
+    this->recrutier4 = new Recrutier();
+    this->recrutier5 = new Recrutier();
+    this->recrutier6 = new Recrutier();
 
 
 
@@ -62,6 +74,15 @@ void Armazon::run(){
     factoryB->__init__(B,firstCola,articulos,queueB);
     factoryC->__init__(C,firstCola,articulos,queueC);
     factoryE->__init__(Special,firstCola,articulos,queueA,queueB);
+    //ALISTADORES
+    recrutier1->__init__(alisto,outgoing,articulos,1);
+    recrutier2->__init__(alisto,outgoing,articulos,2);
+    recrutier3->__init__(alisto,outgoing,articulos,3);
+    recrutier4->__init__(alisto,outgoing,articulos,4);
+    recrutier5->__init__(alisto,outgoing,articulos,5);
+    recrutier6->__init__(alisto,outgoing,articulos,6);
+    //BILLER
+    biller->__init__(outgoing);
     //STARTS
     loader->start();
     balancer->start();
@@ -70,6 +91,13 @@ void Armazon::run(){
     factoryB->start();
     factoryC->start();
     factoryE->start();
+    recrutier1->start();
+    recrutier2->start();
+    recrutier3->start();
+    recrutier4->start();
+    recrutier5->start();
+    recrutier6->start();
+    biller->start();
 
 }
 

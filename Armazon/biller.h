@@ -9,6 +9,7 @@
 class Biller : public QThread{
 public:
     OrderQueue* queue;
+    QString message;
     bool play;
     bool pause;
 

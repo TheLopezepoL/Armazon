@@ -3,6 +3,7 @@
 #include <QThread>
 #include "orderqueue.h"
 #include "articlelist.h"
+#include <QDebug>
 
 class Repartidor : public QThread {
 public:

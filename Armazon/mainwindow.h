@@ -52,6 +52,20 @@ private slots:
 
     void on_EyeFactoryAB_clicked(bool checked);
 
+    void on_EyeRecruiter1_clicked(bool checked);
+
+    void on_EyeBiller_clicked(bool checked);
+
+    void on_EyeRecruiter_6_clicked(bool checked);
+
+    void on_EyeRecruiter_5_clicked(bool checked);
+
+    void on_EyeRecruiter_4_clicked(bool checked);
+
+    void on_EyeRecruiter_3_clicked(bool checked);
+
+    void on_EyeRecruiter_2_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };
